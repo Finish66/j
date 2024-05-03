@@ -1,0 +1,1188 @@
+//File Name: q27347/Calculator.java
+//==================================
+package q27347;
+import java.util.*;
+	// write your code here..
+class Calculator{
+	private int operand1;    
+	private int operand2;    
+	public Calculator(int operand1, int operand2) {        
+		this.operand1 = operand1;        
+		this.operand2 = operand2;    
+		
+	}    
+    class MathOperations {        
+		public int addition() {            
+			return operand1 + operand2;        
+			
+		}        
+		public int subtraction() {            
+			return operand1 - operand2;        
+			
+		}        
+		public int multiplication() {            
+			return operand1 * operand2;
+			}
+        public double division() {
+            return (double) operand1 / operand2;        
+            
+        }    
+		
+	}
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int operand1 = scanner.nextInt();
+
+        int operand2 = scanner.nextInt();
+
+        Calculator calculator = new Calculator(operand1, operand2);
+        Calculator.MathOperations mathOperations = calculator.new MathOperations();
+
+        System.out.println("Addition: " + mathOperations.addition());
+        System.out.println("Subtraction: " + mathOperations.subtraction());
+        System.out.println("Multiplication: " + mathOperations.multiplication());
+        if (operand2 == 0) {
+                System.out.println("Division by zero is not allowed");
+        }
+        else {
+        System.out.printf("Division: %.2f",mathOperations.division());
+        }
+
+        scanner.close();
+    }
+}
+
+//File Name: q26058/Rectangle.java
+//==================================
+package q26058;
+import java.util.*;
+
+public class Rectangle{
+	// write your code here..
+	private int length;
+	private int width;
+	public Rectangle(int l ,int w){
+		this.length=l;
+		this.width=w;
+	}
+	class PerimeterCalculator{
+		public int calculatePerimeter(){
+			return 2*(length+width);
+		}
+	}
+	
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Input length and width
+        System.out.print("Length:");
+        int length = scanner.nextInt();
+
+        System.out.print("Width:");
+        int width = scanner.nextInt();
+
+        // Create Rectangle object
+        Rectangle rectangle = new Rectangle(length, width);
+
+        // Create PerimeterCalculator object
+        PerimeterCalculator perimeterCalculator = rectangle.new PerimeterCalculator();
+
+        // Calculate perimeter
+        int perimeter = perimeterCalculator.calculatePerimeter();
+
+        // Print rectangle details
+        System.out.println("Rectangle Details:");
+        System.out.println("Length: " + rectangle.length);
+        System.out.println("Width: " + rectangle.width);
+        System.out.println("Perimeter: " + perimeter);
+
+        scanner.close();
+    }
+}
+
+//File Name: q27349/MathExpression.java
+//==================================
+package q27349;
+import java.util.*;
+	// write your code here..
+class MathExpression{
+	int a;
+	int b;
+	MathExpression(int a,int b){
+		this.a=a;
+		this.b=b;
+		
+	}
+	
+	class ExpressionEvaluator{
+		public int evaluateSumSquare(){
+		return	(a+b)*(a+b); 
+		}
+		public int evaluateDifferenceSquare(){
+		return	(a-b)*(a-b);
+		}
+	}
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int a = scanner.nextInt();
+
+        int b = scanner.nextInt();
+
+        MathExpression mathExpression = new MathExpression(a, b);
+        MathExpression.ExpressionEvaluator expressionEvaluator = mathExpression.new ExpressionEvaluator();
+
+        int sumSquare = expressionEvaluator.evaluateSumSquare();
+        int differenceSquare = expressionEvaluator.evaluateDifferenceSquare();
+
+        System.out.println("(a + b)^2: " + sumSquare);
+        System.out.println("(a - b)^2: " + differenceSquare);
+
+        scanner.close();
+    }
+}
+
+//File Name: q27351/PercentageCalculator.java
+//==================================
+package q27351;
+import java.util.*;
+	// write your code here..
+
+class PercentageCalculator{
+	
+	public double p;
+	public double w;
+	
+	PercentageCalculator(double p,double w){
+		this.p=p;
+		this.w=w;
+	}
+	
+	class PercentageFinder{
+		public double calculatePercentage(){
+			return (p/w)*100;
+		}
+	} 
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        double partInput = scanner.nextDouble();
+
+        double wholeInput = scanner.nextDouble();
+
+        PercentageCalculator percentageCalculator = new PercentageCalculator(partInput, wholeInput);
+        PercentageCalculator.PercentageFinder percentageFinder = percentageCalculator.new PercentageFinder();
+        double percentage = percentageFinder.calculatePercentage();
+
+        if (!Double.isNaN(percentage)) {
+            System.out.println(percentage + "%");
+        }
+
+        scanner.close();
+    }
+}
+
+//File Name: q26055/Employee.java
+//==================================
+package q26055;
+import java.util.Scanner;
+
+	// write your code here..
+	class Employee{
+		public int salary;
+		public String name;
+		Employee(String s,int sal){
+			this.name= s;
+			this.salary=sal;
+		}
+		class BonusCalculator {
+			public double calculateBonus(){
+				return salary*0.1;
+			}
+		}
+	
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Input employee's name
+        System.out.print("Name: ");
+        String name = scanner.nextLine();
+
+        // Input employee's salary
+        System.out.print("Salary: ");
+        int salary = scanner.nextInt();
+
+        // Create Employee object
+        Employee employee = new Employee(name, salary);
+
+        // Create BonusCalculator object
+        BonusCalculator bonusCalculator = employee.new BonusCalculator();
+
+        // Calculate bonus
+        double bonus = bonusCalculator.calculateBonus();
+
+        // Print employee details
+        System.out.println("Employee Details:");
+        System.out.println("Name: " + employee.name);
+        System.out.println("Salary: $" + employee.salary);
+        System.out.println("Bonus: $" + bonus);
+
+        scanner.close();
+    }
+}
+
+//File Name: q27346/ArrayMaxFinder.java
+//==================================
+package q27346;
+import java.util.*;
+	// write your code here..
+
+class ArrayMaxFinder{
+	
+	int [] arr;
+	
+	ArrayMaxFinder(int[]arr){
+		this.arr=arr;
+	}
+	class MaxFinder{
+		public int findMaxValue(){
+			Arrays.sort(arr);
+			return arr[arr.length-1];
+		}
+	}
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int n = scanner.nextInt();
+        int[] array = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            array[i] = scanner.nextInt();
+        }
+
+        ArrayMaxFinder arrayMaxFinder = new ArrayMaxFinder(array);
+        ArrayMaxFinder.MaxFinder maxFinder = arrayMaxFinder.new MaxFinder();
+        int maxValue = maxFinder.findMaxValue();
+
+        System.out.println(maxValue);
+
+        scanner.close();
+    }
+}
+
+//File Name: q27350/SquareRootCalculator.java
+//==================================
+package q27350;
+import java.util.*;
+//write your code here...
+
+class SquareRootCalculator{
+	public int n;
+	
+	SquareRootCalculator(int n){
+		this.n = n;
+	}
+	
+	class SquareRootFinder{
+		public double findSquareRoot(){
+			return Math.sqrt(n);
+		}
+	}
+
+	public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int input = scanner.nextInt();
+
+        SquareRootCalculator squareRootCalculator = new SquareRootCalculator(input);
+        SquareRootCalculator.SquareRootFinder squareRootFinder = squareRootCalculator.new SquareRootFinder();
+        double squareRoot = squareRootFinder.findSquareRoot();
+        System.out.printf("%.2f\n",squareRoot);
+
+        scanner.close();
+    }
+}
+
+//File Name: q27355/StringConcatenator.java
+//==================================
+package q27355;
+import java.util.Scanner;
+
+	// write your code here..
+
+class StringConcatenator{
+	public String s1,s2;
+	StringConcatenator(String s1,String s2){
+		this.s1=s1;
+		this.s2=s2;
+	}
+	class ConcatenationBuilder{
+		public String concatenateStrings(String s){
+			return s1+s+s2;
+		}
+	}
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        String str1 = scanner.nextLine();
+
+        String str2 = scanner.nextLine();
+
+        String separator = scanner.nextLine();
+        
+        StringConcatenator concatenator = new StringConcatenator(str1, str2);
+        String result = concatenator.new ConcatenationBuilder().concatenateStrings(separator);
+        
+        System.out.println(result);
+
+        scanner.close();
+    }
+}
+
+ //File Name: q25882/MaxValueLambda.java
+//==================================
+package q25882;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+// Step 1: Create a functional interface
+interface MaxValueFinder {
+    int findMax(int[] array);
+}
+
+public class MaxValueLambda {
+    public static void main(String[] args) {
+
+	// write your code here..
+	Scanner sc = new Scanner(System.in);
+	System.out.print("Size of the array: ");
+	int n= sc.nextInt();
+	int [] arr = new int[n];
+	for(int i =0;i<n;i++){
+		System.out.print("Element "+(i+1)+": ");
+		arr[i] = sc.nextInt();
+	}
+	Arrays.sort(arr);
+	System.out.println(arr[n-1]);
+    }
+}
+
+//File Name: q25857/AlexWordProcessor.java
+//==================================
+package q25857;
+import java.util.Scanner;
+import java.util.function.Function;
+
+@FunctionalInterface
+interface VowelRemover {
+    String removeVowels(String word);
+}
+
+public class AlexWordProcessor {
+	
+	    public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		String s = sc.nextLine();
+		VowelRemover remove = word -> word.replaceAll("[aeiouAEIOU]","");
+		System.out.println(remove.removeVowels(s));
+	}
+}
+
+	//File Name: q25859/PalindromeCheck.java
+//==================================
+package q25859;
+
+import java.util.Scanner;
+
+@FunctionalInterface
+interface PalindromeChecker {
+    boolean isPalindrome(String word);
+}
+
+public class PalindromeCheck {
+    public static void main(String[] args) {
+
+	// write your code here..
+	Scanner sc = new Scanner(System.in);
+	String s = sc.nextLine();
+	
+	PalindromeChecker check = (word) -> {
+		String rev = new StringBuilder(word).reverse().toString();
+		return rev.equalsIgnoreCase(word);
+	};
+	
+	if(check.isPalindrome(s)){
+		System.out.println(s+" is a palindrome");
+	}
+	else 
+		System.out.println(s+" is not a palindrome");
+    }
+}
+
+//File Name: q25883/EvenNumber.java
+//==================================
+package q25883;
+import java.util.Scanner;
+
+// Step 1: Create a functional interface
+interface EvenNumberFilter {
+    int[] filterEven(int[] numbers);
+}
+
+public class EvenNumber {
+    public static void main(String[] args) {
+	Scanner scanner = new Scanner(System.in);
+	System.out.print("Size of the array: ");        
+	int size = scanner.nextInt();
+	int[] numbers = new int[size];
+	for (int i = 0; i < size; i++) {
+		System.out.print("Element " + (i + 1) + ": ");
+		numbers[i] = scanner.nextInt();
+		}
+		// Step 3: Create a lambda expression to filter even numbers
+	EvenNumberFilter evenFilter = (int[] numArray) -> {
+		int count = 0;
+		for (int num : numArray) {
+			if (num % 2 == 0) {
+				count++;
+				}
+		};
+		int[] evenNumbers = new int[count];
+		int index = 0;
+		for (int num : numArray) {
+			if (num % 2 == 0) {
+				evenNumbers[index++] = num;
+				}
+				}
+				return evenNumbers;
+				};
+						// Step 4: Apply the lambda expression and print the array of even numbers
+		int[] evenArray = evenFilter.filterEven(numbers);
+		if (evenArray.length == 0) {
+			System.out.println("No even numbers");
+			} else {
+				for (int num : evenArray) {
+					System.out.print(num + " ");
+					}
+					System.out.println();
+					}
+					scanner.close();
+    }
+
+}
+
+//File Name: q26241/CelsiusToFahrenheit.java
+//==================================
+package q26241;
+
+import java.util.Scanner;
+
+interface TemperatureConverter {
+    double convertCelsiusToFahrenheit(double celsiusTemperature);
+}
+
+public class CelsiusToFahrenheit {
+    public static void main(String[] args) {
+
+	//write your code here..
+	Scanner sc = new Scanner(System.in);
+	double c = sc.nextDouble();
+	
+	TemperatureConverter converter = (double temp) ->{
+		return (temp*9 / 5)+32;
+	};
+	
+	double fr = converter.convertCelsiusToFahrenheit(c);
+	System.out.println(fr);
+	
+    }
+}
+
+//File Name: q26233/PrimeNumber.java
+//==================================
+package q26233;
+
+import java.util.Scanner;
+
+// Step 1: Create a functional interface
+interface PrimeNumberChecker {
+    boolean isPrime(int number);
+}
+
+public class PrimeNumber {
+    public static void main(String[] args) {
+
+	// write your code here..
+	Scanner sc = new Scanner(System.in);
+	System.out.print("Enter a number: ");
+	int a = sc.nextInt();
+	
+	PrimeNumberChecker check = (number)->{
+		for(int i = 2;i<number;i++){
+			if(number%i==0)
+				return false;
+		}
+		return true;
+	};
+	
+	if(check.isPrime(a)){
+		System.out.println(a+" is a prime number");
+	}else {
+		System.out.println(a+" is not a prime number");
+	}
+    }
+}
+
+//File Name: q25883/EvenNumber.java
+//==================================
+package q25883;
+// import java.util.Scanner;
+
+// // Step 1: Create a functional interface
+// interface EvenNumberFilter {
+//     int[] filterEven(int[] numbers);
+// }
+
+// public class EvenNumber {
+//     public static void main(String[] args) {
+
+// 	//write your code here..
+
+// }
+
+import java.util.*;
+
+public class EvenNumber{
+	public static void main(String[]args){
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Size of the array: ");
+		int n= sc.nextInt();
+		List<Integer> arr = new ArrayList<>();
+		for(int i = 0;i<n;i++){
+			System.out.print("Element "+(i+1)+": ");
+			int a = sc.nextInt();
+			if(a%2==0){
+				arr.add(a);
+			}
+		}
+		if(arr.isEmpty()){
+			System.out.println("No even numbers");
+		}else 
+		{
+			System.out.println(arr);
+		}
+	}
+}
+
+//File Name: q26233/PrimeNumber.java
+//==================================
+package q26233;
+
+import java.util.Scanner;
+
+// Step 1: Create a functional interface
+interface PrimeNumberChecker {
+    boolean isPrime(int number);
+}
+
+public class PrimeNumber {
+    public static void main(String[] args) {
+
+	// write your code here..
+	Scanner sc = new Scanner(System.in);
+	System.out.print("Enter a number: ");
+	int a = sc.nextInt();
+	PrimeNumberChecker check = (number)->{
+		for(int i=2;i<number;i++){
+			if(number%i==0)
+				return false;
+		}
+		return true;
+	};
+	boolean ans = check.isPrime(a);
+	
+	if(ans)
+		System.out.println(a+" is a prime number");
+	else 
+		System.out.println(a+ " is not a prime number");
+    }
+}
+
+//File Name: SquareCalc.java
+//==================================
+import java.util.Scanner;
+
+// interface Square {
+//     void displaySquare();
+// }
+
+// public class SquareCalc {
+//     public static void main(String[] args) {
+//         Scanner sc = new Scanner(System.in);
+//         int x = sc.nextInt();
+        
+        
+//         // write your code here...
+        
+//         displaySquare();
+        
+//         sc.close();
+//     }
+// }
+
+
+public class SquareCalc{
+	public static void main(String[]args){
+		Scanner sc = new Scanner(System.in);
+		int a = sc.nextInt();
+		System.out.println(a*a);
+	}
+}
+
+//File Name: q27373/MathOperations.java
+//==================================
+package q27373;
+import java.util.Scanner;
+
+// interface Calculator {
+//     void performOperation(int a, int b);
+// }
+
+// public class MathOperations {
+//     public static void main(String[] args) {
+        
+//         // write your code here..
+        
+//         Scanner scanner = new Scanner(System.in);
+//         int num1 = scanner.nextInt();
+//         int num2 = scanner.nextInt();
+
+//         additionCalculator.performOperation(num1, num2);
+//         scanner.close();
+//     }
+// }
+
+
+public class MathOperations{
+	public static void main(String[]args){
+		Scanner sc = new Scanner(System.in);
+		int a = sc.nextInt();
+		int b= sc.nextInt();
+		System.out.println(a+b);
+	}
+}
+
+//File Name: q27362/NumberTester.java
+//==================================
+package q27362;
+
+import java.util.Scanner;
+
+public class NumberTester{
+	public static void main(String []args){
+		Scanner sc = new Scanner(System.in);
+		int a = sc.nextInt();
+		if(a%2==0)
+			System.out.println(a+" is Even");
+		else 
+			System.out.println(a+ " is Odd");
+	}
+}
+
+public class MathOperations{
+	public static void main(String[]args){
+		Scanner sc = new Scanner(System.in);
+		int a = sc.nextInt();
+		int b= sc.nextInt();
+		System.out.println(a+b);
+	}
+}
+
+//File Name: q27362/NumberTester.java
+//==================================
+package q27362;
+
+import java.util.Scanner;
+
+
+
+public class NumberTester{
+	public static void main(String []args){
+		Scanner sc = new Scanner(System.in);
+		int a = sc.nextInt();
+		if(a%2==0)
+			System.out.println(a+" is Even");
+		else 
+			System.out.println(a+ " is Odd");
+	}
+}
+
+//File Name: q27402/StringEditor.java
+//==================================
+package q27402;
+
+import java.util.Scanner;
+
+interface StringModifier {
+    String modify(String input);
+}
+
+public class StringEditor {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        String inputString = scanner.nextLine();
+
+       // write your code here..
+	StringModifier stringReverser = new StringModifier() {
+		@Override
+		public String modify(String input) {
+			return new StringBuilder(input).reverse().toString();
+		}
+	};
+        String reversedString = stringReverser.modify(inputString);
+        System.out.println(reversedString);
+        scanner.close();
+    }
+}
+
+//File Name: q27399/TextProcessor.java
+//==================================
+package q27399;
+import java.util.Scanner;
+
+interface Filter {
+    String applyFilter(String text);
+}
+
+public class TextProcessor {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        String inputText = scanner.nextLine();
+
+		// write your code here..
+        Filter vowelRemover = new Filter(){
+        	@Override
+        	public String applyFilter(String text){
+        		return text.replaceAll("[aeiouAEIOU]", "");
+        	}
+        };
+        String filteredText = vowelRemover.applyFilter(inputText);
+        System.out.println(filteredText);
+
+        scanner.close();
+    }
+}
+
+//File Name: q27403/StringTransformer.java
+//==================================
+package q27403;
+import java.util.Scanner;
+
+// interface Transformer {
+//     String transform(String input);
+// }
+
+// public class StringTransformer {
+//     public static void main(String[] args) {
+//         Scanner scanner = new Scanner(System.in);
+//         String inputString = scanner.nextLine();
+
+// 		// write your code here..
+        
+//         String transformedString = uppercaseConverter.transform(inputString);
+//         System.out.println(transformedString);
+//         scanner.close();
+//     }
+// }
+
+
+public class StringTransformer{
+	public static void main(String[]args){
+		Scanner sc = new Scanner(System.in);
+		String s = sc.nextLine();
+		
+		System.out.println(s.toUpperCase());
+	}
+}
+
+//File Name: q27375/StringValidator.java
+//==================================
+package q27375;
+import java.util.Scanner;
+
+interface Validator {
+    boolean isValid(String input);
+}
+
+public class StringValidator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String inputString = scanner.nextLine();
+
+        // write your code here..
+		Validator alphabeticValidator = new Validator(){
+			@Override
+			public boolean isValid(String input){
+				return input.matches("[a-zA-z]");
+			}
+		};
+        if (alphabeticValidator.isValid(inputString)) {
+            System.out.println(inputString + " is valid");
+        } else {
+            System.out.println(inputString + " is invalid");
+        }
+
+        scanner.close();
+    }
+}
+
+//File Name: q22005/Person.java
+//==================================
+package q22005;
+// write your code here 
+import java.util.*;
+
+public class Person{
+	private String name;
+	private int age;
+	
+	public Person(){
+		this.name = "Unknown";
+		this.age=0;
+	}
+	public Person(String name,int age){
+		this.name = name;
+		this.age =age;
+	}
+	public String getName(){
+		return name;
+	}
+	public void setName(String name){
+		this.name = name;
+	}
+	public void setAge(int age){
+		this.age = age;
+	}
+	public int getAge(){
+		return age;
+}
+    
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Person defaultPerson = new Person();
+        String nameInput = scanner.nextLine();
+        int ageInput = scanner.nextInt();
+        Person userInputPerson = new Person(nameInput, ageInput);
+        System.out.println("Default Person: Name - " + defaultPerson.getName() + ", Age - " + defaultPerson.getAge());
+        System.out.println("User Input Person: Name - " + userInputPerson.getName() + ", Age - " + userInputPerson.getAge());
+        scanner.close();
+    }
+}
+
+//File Name: q22013/ArrayOperations.java
+//==================================
+package q22013;
+import java.util.*;
+// write your code here 
+public class ArrayOperations{
+
+	int []arr;
+	public ArrayOperations(int[]arr){
+		this.arr = arr;
+	}
+	public int findSum(){
+		int sum = 0;
+		for(int i : arr){
+			sum+=i;
+		}
+		return sum;
+	}
+	public double findAverage(){
+		int sum = findSum();
+		return (double) sum/arr.length;
+	}
+	public int findMaximum(){
+		Arrays.sort(arr);
+		return arr[arr.length-1];
+	}
+
+	public void displayArray(){
+		System.out.println("Array: "+java.util.Arrays.toString(arr));
+	} 
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int size = scanner.nextInt();
+        int[] userArray = new int[size];
+        for (int i = 0; i < size; i++) {
+            System.out.print("Element " + (i + 1) + ": ");
+            userArray[i] = scanner.nextInt();
+        }
+        ArrayOperations arrayOps = new ArrayOperations(userArray);
+        arrayOps.displayArray();
+        System.out.println("Choose an operation:");
+        System.out.println("1. Find Sum");
+        System.out.println("2. Find Average");
+        System.out.println("3. Find Maximum");
+
+        System.out.print("Enter your choice: ");
+        int choice = scanner.nextInt();
+        switch (choice) {
+            case 1:
+                System.out.println("Sum of the array: " + arrayOps.findSum());
+                break;
+            case 2:
+                System.out.println("Average of the array: " + arrayOps.findAverage());
+                break;
+            case 3:
+                System.out.println("Maximum element in the array: " + arrayOps.findMaximum());
+                break;
+            default:
+                System.out.println("Invalid choice. Please enter a valid option.");
+        }
+
+        scanner.close();
+    }
+}
+
+//File Name: q25711/DateFormatConverter.java
+//==================================
+package	q25711;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
+
+// public class DateFormatConverter {
+import java.util.*;
+
+public class DateFormatConverter{
+	// write your code here..
+	public static void main(String[]args){
+		Scanner sc = new Scanner (System.in);
+		String input = sc.nextLine();
+		
+		LocalDate date = LocalDate.parse(input);
+		String o = date.format(DateTimeFormatter.ofPattern("EEEE, MMMM dd, yyyy"));
+		System.out.println(o);
+	}
+}
+
+//File Name: q25714/LibraryBooking.java
+//==================================
+package q25714;
+import java.util.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+// import java.time.DateFormatter;
+// write your code..
+public class LibraryBooking {
+	public static void main(String[]args){
+		
+		Scanner sc = new Scanner(System.in);
+		String borr = sc.nextLine();
+		int retu = sc.nextInt();
+		DateTimeFormatter forma = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+		LocalDate borroe = LocalDate.parse(borr,forma);
+		LocalDate due = borroe.plusDays(retu);
+		
+		System.out.println(due.format(forma));
+
+		Scanner sc = new Scanner(System.in);
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		LocalDate date = LocalDate.parse(formatter,sc.nextLine());
+
+		LocalDate newDate = 
+	}
+}
+
+//File Name: q25715/VacationPlanner.java
+//==================================
+package	q25715;
+import java.util.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+// write your code..
+
+public class VacationPlanner {
+    
+    // write your code..
+    
+    public static void main(String[]args){
+    	Scanner sc = new Scanner(System.in);
+    	String start = sc.nextLine();
+    	LocalDate loc = LocalDate.parse(start,DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+    	int days = sc.nextInt();
+    	
+    	LocalDate end = loc.plusDays(days);
+    	System.out.println(end.format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
+    }
+}
+
+
+
+
+//File Name: q26148/NearestSaturday.java
+//==================================
+package	q26148;
+import java.util.*;
+import java.time.*;
+import java.io.*;
+import java.time.format.*;
+
+public class NearestSaturday {
+    
+    public static void main(String[]args){
+    	Scanner sc = new Scanner(System.in);
+    	
+    	String s = sc.nextLine();
+    	DateTimeFormatter dt = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+    	LocalDate date = LocalDate.parse(s,dt);
+    	
+    	while(date.getDayOfWeek()!=DayOfWeek.SATURDAY){
+    		date = date.plusDays(1);	
+    	}
+    	String ans = date.format(dt);
+    	System.out.println(ans);
+    }
+    
+}
+
+//File Name: q26151/SundayCounter.java
+//==================================
+package	q26151;
+import java.util.Scanner;
+import java.util.*;
+import java.time.*;
+import java.time.format.*;
+import java.time.temporal.*;
+// write the required code..
+
+public class SundayCounter {
+    public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+		DateTimeFormatter df = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+		LocalDate start = LocalDate.parse(sc.nextLine(),df);
+		LocalDate end = LocalDate.parse(sc.nextLine(),df);
+		int ans = 0;
+		while(!start.isAfter(end)){
+			if(start.getDayOfWeek() == DayOfWeek.SUNDAY)
+				ans++;
+			start = start.plusDays(1);
+		}
+	
+		System.out.println(ans);
+    }
+}
+
+//File Name: q26149/PalindromeDates.java
+//==================================
+package	q26149;
+
+// write the code..
+import java.util.*;
+import java.time.*;
+import java.time.format.*;
+
+public class PalindromeDates {
+   public static void main(String[]args){
+   	Scanner sc = new Scanner(System.in);
+   	DateTimeFormatter dt = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+   	LocalDate start = LocalDate.parse(sc.nextLine(),dt);
+   	LocalDate end = LocalDate.parse(sc.nextLine(),dt);
+   	int ans = 0;
+   	while(!start.isAfter(end)){
+   		if(check(start)){
+   			ans++;
+   		}
+   		start = start.plusDays(1);
+   	}
+   	System.out.println(ans);
+   }
+	public static boolean check(LocalDate date){
+		String stdate = date.format(DateTimeFormatter.ofPattern("ddMMyyyy"));
+		return stdate.equals(new StringBuilder(stdate).reverse().toString());
+	}
+	
+}
+//File Name: q26156/OddDatesFinder.java
+//==================================
+package	q26156;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
+// write the required code..
+
+public class OddDatesFinder {
+
+	public static void main(String[]args){
+		Scanner sc = new Scanner(System.in);
+		
+		String start = sc.next();
+		String end = sc.next();
+		
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd=MM=yyyy");
+		
+		LocalDate startdate = LocalDate.parse(start,formatter);
+		LocalDate enddate = LocalDate.parse(end,formatter);
+		
+		while(!startdate.isAfter(enddate)){
+			if(isOdd(startdate)){
+				System.out.println(startdate.format(formatter));
+			}
+			startdate = startdate.plusDays(1);
+		}
+	}
+	private static boolean isOdd(LocalDate date){
+		String dateStr = date.toString().replaceAll("-","");
+		for(char c:dateStr.toCharArray()){
+			if(c%2==0){
+				return false;
+			}
+		}
+		return true;
+	}
+
+}
+
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
+
+public class WorkSession {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+
+        System.out.println("Enter the start time (HH:mm): ");
+        String startTimeStr = scanner.nextLine();
+        LocalTime startTime = LocalTime.parse(startTimeStr, formatter);
+
+        System.out.println("Enter the end time (HH:mm): ");
+        String endTimeStr = scanner.nextLine();
+        LocalTime endTime = LocalTime.parse(endTimeStr, formatter);
+
+        int startHour = startTime.getHour();
+        int startMinute = startTime.getMinute();
+        int endHour = endTime.getHour();
+        int endMinute = endTime.getMinute();
+
+        int totalMinutes = (endHour * 60 + endMinute) - (startHour * 60 + startMinute);
+        int totalHours = totalMinutes / 60;
+        int remainingMinutes = totalMinutes % 60;
+
+        System.out.println("Total hours worked: " + totalHours + " hours and " + remainingMinutes + " minutes.");
+
+        scanner.close();
+    }
+}
+
+

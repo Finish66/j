@@ -1,0 +1,442 @@
+Unit 5
+
+package Main;
+
+// import java.io.BufferedReader;
+// import java.io.BufferedWriter;
+// import java.io.File;
+// import java.io.FileInputStream;
+// import java.io.FileOutputStream;
+// import java.io.FileReader;
+// import java.io.FileWriter;
+// import java.io.IOException;
+// import java.io.InputStreamReader;
+import java.io.*;
+import java.util.Arrays;
+import java.util.Scanner;
+
+import javax.management.remote.SubjectDelegationPermission;
+
+public class FileHandling {
+    public static void main(String[] args) throws IOException {
+        Scanner sc = new Scanner(System.in);
+        // & Byte Stream
+        FileInputStream input = new FileInputStream("input.txt");
+        FileOutputStream output = new FileOutputStream("Output.txt");
+        int c;
+        while ((c = input.read()) != -1) {
+            output.write(c);
+        }
+        // &Character Stream
+        FileReader reader = new FileReader("input.txt");
+        FileWriter writer = new FileWriter("Output.txt");
+
+        int l;
+        while ((l = reader.read()) != -1) {
+            writer.write(l);
+        }
+
+        // & Standard Streams
+        InputStreamReader in = new InputStreamReader(System.in);
+        System.out.println("Enter characters, 'q' to quit.");
+        char ch;
+        do {
+            ch = (char) in.read();
+            System.out.print(ch);
+        } while (ch != 'q');
+
+        // & File
+        File file = new File("example.txt");
+        boolean created = file.createNewFile();
+        file.delete();
+        file.exists();
+
+        // & Read a file
+        File f = new File("example.txt");
+        FileReader read = new FileReader(f);
+        int character;
+        while ((character = read.read()) != -1) {
+            System.out.print((char) character);
+        }
+
+        // & Write a file
+        File tofile = new File("example.txt");
+        FileWriter write = new FileWriter(tofile);
+        FileWriter append = new FileWriter(tofile, true); // * to append in the file
+        writer.write("This is an example text.");
+
+        // & Bufffered Readerd
+        String word = "Hello";
+        BufferedReader reader3 = new BufferedReader(new FileReader(file));
+        String line;
+        int index = -1, linenum = 0;
+        while ((line = reader3.readLine()) != null) {
+            linenum++;
+            line.indexOf(word);
+            if (index != -1)
+                break;
+        }
+
+        // & Buffered Writer
+        BufferedWriter bw = new BufferedWriter(new FileWriter(file, true));
+        String s = sc.nextLine();
+        bw.newLine();
+        bw.write(s);
+
+        // & Find length of file
+        BufferedReader bufr = new BufferedReader(new FileReader(file));
+        StringBuilder sb = new StringBuilder();
+        String linee;
+        while ((linee = bufr.readLine()) != null) {
+            sb.append(linee);
+        }
+        int length = sb.toString().length();
+
+        // & Remove line from file
+        bufr = new BufferedReader(new FileReader(sc.nextLine()));
+        sb = new StringBuilder();
+        int n = 5;
+        int curr = 1;
+        while ((line = bufr.readLine()) != null) {
+            if (curr != n)
+                sb.append(line).append("\n");
+            curr++;
+        }
+        if (curr > n || curr < 1)
+            System.out.println("Eroor");
+
+        bw = new BufferedWriter(new FileWriter(file));
+        bw.write(sb.toString());
+
+        // & Find word
+        bufr = new BufferedReader(new FileReader(file));
+        String li;
+        boolean fe = false;
+        while ((li = bufr.readLine()) != null) {
+            int i = li.indexOf("\\b" + word + "\\b");
+            if (i != -1)
+                fe = true;
+        }
+        while ((li = bufr.readLine()) != null) {
+            String[] wrr = li.split(" ");
+            for (String cc : wrr) {
+                if (cc.equals(wrr))
+                    fe = true;
+            }
+        }
+
+        // & remove word
+        String words = "Hlo";
+        String line3 = "";
+        while ((line3 = bufr.readLine()) != null) {
+            sb.append(line).append("\n");
+        }
+        String original = sb.toString();
+        String removed = sb.toString().replace("\\b+" + word + "\\b+", "");
+        if (original.equals(removed))
+            System.out.println("No words found");
+        bw.write(removed);
+
+        // & longest word finder
+        bufr = new BufferedReader(new FileReader(file));
+        String li;
+        String lon = "";
+        while ((li = bufr.readLine()) != null) {
+            String[] w = line.split("\\s+");
+            for (String st : w) {
+                if (lon.length() < st.length())
+                    lon = st;
+            }
+        }
+        System.out.println(lon);
+
+        // & Remove special characters
+        bufr = new BufferedReader(new FileReader(file));
+        while ((line = bufr.readLine()) != null) {
+            String replaced = line.replaceAll("[^a-zA-Z0-9\\s]", "");
+            sb.append(replaced).append("\n");
+        }
+        bw = new BufferedWriter(new FileWriter(file));
+        bw.write(sb.toString());
+
+        // & Word sorter
+        while ((line = bufr.readLine()) != null) {
+            sb.append(line);
+            sb.append(" ");
+        }
+        String[] wrds = sb.toString().split(" ");
+        Arrays.sort(wrds);
+        for (String w : wrds)
+            bw.write(w + " ");
+
+        // & Special character counter
+        bufr = new BufferedReader(new FileReader(file));
+        int cnt = 0;
+        while ((line = bufr.readLine()) != null) {
+            for (char cha : line.toCharArray()) {
+                if (!Character.isLetterOrDigit(cha))
+                    cnt++;
+            }
+        }
+
+        // & Vowel COnsonant counter
+        int vowel = 0, cnsnont = 0;
+        bufr = new BufferedReader(new FileReader(file));
+        while ((line = bufr.readLine()) != null) {
+            for (char che : line.toCharArray()) {
+                if ("aeiouAEIOU".indexOf(c) != -1)
+                    vowel++;
+                else
+                    cnsnont++;
+            }
+        }
+
+        // & DeCaptalise the file
+        while ((line = bufr.readLine()) != null) {
+            sb.append(line.toUpperCase()).append("\n");
+        }
+
+        // & Anser to erripuku
+        try {
+            int number = Integer.parseInt(sc.nextLine());
+            System.out.println(number);
+        } catch (NumberFormatException e) {
+            System.out.println("Cannot parse the number");
+        }
+
+        // & Read and print every charcater in the firle
+        FileReader fread = new FileReader(sc.nextLine());
+        FileWriter fwrite = new FileWriter(sc.nextLine());
+
+        int charCode;
+        while ((charCode = fread.read()) != -1) {
+            char ccc = (char) charCode;
+            fwrite.write(ccc);
+        }
+        // & Find maxnimum number
+        bufr = new BufferedReader(new FileReader(sc.nextLine()));
+        int maxi = Integer.MIN_VALUE;
+        while ((line = bufr.readLine()) != null) {
+            int nummm = Integer.parseInt(line);
+            if (nummm > maxi)
+                maxi = nummm;
+        }
+        System.out.println(maxi);
+
+        // & Remove Vowels;
+        bufr = new BufferedReader(new FileReader(file));
+        sb = new StringBuilder();
+        while ((line = bufr.readLine()) != null) {
+            for (char ccc : line.toCharArray()) {
+                if ("AEIOUaeiou".indexOf(ccc) == -1) {
+                    sb.append(ccc);
+                }
+            }
+            sb.append("\n");
+        }
+        System.out.println(sb.toString());
+
+        // & print negative numbers
+        while ((line = bufr.readLine()) != null) {
+            int numm = Integer.parseInt(line);
+            if (numm < 0)
+                System.out.println(numm);
+        }
+    }
+}
+
+/* The top most line in the exception stack trace which is from our code (meaning from a class written by us) is responsible for causing the exception.
+
+Caused by: java.lang.NumberFormatException: For input string: "4a"	// notice the exception class name and error message
+        at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+        at java.lang.Integer.parseInt(Integer.java:580)
+        at java.lang.Integer.parseInt(Integer.java:615)
+        at ExceptionDemo3.convertAndAdd(ExceptionDemo3.java: 10 )
+        at ExceptionDemo3.main(ExceptionDemo3.java:5)
+        ... 6 more
+
+Which means we can safely ignore all the top 3 lines in the stack trace which are from classes java.lang.NumberFormatException and java.lang.Integer.
+
+As mentioned earlier we should scan from top to bottom to find the top most line in the exception stack trace which is from our code (meaning from a class written by us, which in our case is ExceptionDemo3).
+
+
+Hierarchy 
+
+                         Throwable
+                             |
+       ______________________|___________________							
+       |					 	                 |
+     Error                                   Exception			
+       |                                _________| 
+       |								|    IOException
+       |-- VirtualMachineError          |        |-- ParseException
+       |-- OutOfMemoryError             |        |-- InterruptedException
+       |-- StackOverflowError           |
+                                 RuntimeException
+                                        |
+                                        |-- NullPointerException
+                                        |-- ArithmeticException
+                                        |-- IllegalArgumentException
+                                        |               |
+                                        |        NumberFormatException
+                                        |
+                                        |-- IndexOutOfBoundsException
+                                              |
+                                              |--ArrayIndexOutOfBoundsException
+                                              |--StringIndexOutOfBoundsException
+
+Try-catch
+
+This handling is done using a try-catch block or propagating the exception to the caller.
+ */
+
+try {  // try-catch block start
+	Thread.sleep(2000);
+} catch (InterruptedException e) {  // catch clause 
+	e.printStackTrace();
+}  // try-catch block end
+
+try {
+    // Code that might throw a checked exception
+} catch (CheckedException e) {
+    // Handle the exception
+}
+
+int[] numbers = {1, 2, 3};
+try {
+    int value = numbers[5]; // Unchecked ArrayIndexOutOfBoundsException
+} catch (ArrayIndexOutOfBoundsException e) {
+    // Handle the exception
+}
+
+
+To create a new file, you can use the createNewFile() method of the File class:
+
+File file = new File("example.txt");
+boolean created = file.createNewFile();
+if (created) {
+    System.out.println("File created successfully.");
+} else {
+    System.out.println("File already exists or an error occurred.");
+}
+
+
+File file = new File("example.txt");
+FileReader reader = new FileReader(file);
+int character;
+while ((character = reader.read()) != -1) {
+    System.out.print((char) character);
+}
+reader.close(); // Don't forget to close the reader when you're done
+
+
+Best file example
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class RemoveWordFromFile {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String wordToRemove = sc.nextLine();
+        String filename = sc.nextLine();
+
+        try {
+            File file = new File(filename);
+            if (!file.exists()) {
+                System.out.println("File not found");
+                return;
+            }
+
+            BufferedReader reader = new BufferedReader(new FileReader(file));
+            StringBuilder content = new StringBuilder();
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+                content.append(line).append("\n");
+            }
+            reader.close();
+
+            String updatedContent = content.toString().replaceAll("\\b" + wordToRemove + "\\b", "");
+            if (updatedContent.equals(content.toString())) {
+                System.out.println("Word not found");
+                return;
+            }
+
+            FileWriter writer = new FileWriter(file);
+            writer.write(updatedContent);
+            writer.close();
+
+            System.out.println("Updated file content:");
+            System.out.println(updatedContent);
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found");
+        } catch (IOException e) {
+            System.out.println("Error reading/writing file");
+        } finally {
+            sc.close();
+        }
+    }
+}
+
+
+
+The abstract classes InputStream and OutputStream are the super classes for all byte streams.
+
+InputStream provides the below three methods to read input:
+read() - it reads the next byte of data from the input stream and returns the value of that byte as an int.
+read(byte[] byteArr) - it reads some number of bytes from the input stream and stores them into the byte array byteArr and returns the count of bytes read.
+read(byte[] byteArr, int startOffsetInByteArr, int length) - it tries to reads a maximum of length bytes of data from the input stream into an array of byteArr and returns the actual count of bytes it read.
+
+Similarly there are three corresponding write methods in the OutputStream:
+write(int singleByte) - it writes the singleByte of data provided as an int value into the method.
+write(byte[] byteArr) - it writes all the bytes in the byte array byteArr into the output stream.
+write(byte[] byteArr, int startOffsetInByteArr, int length) - it writes the length bytes stored in byteArr from startOffsetInByteArr into the output stream.
+Both the Input and output streams implement Closeable interface, which contains a close() method.
+
+
+Example on input stream output stream 
+import java.io.ByteArrayOutputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Scanner;
+
+// public class InputStreamToByteArray {
+
+import java.io.*;
+
+public class InputStreamToByteArray {
+	public static void main(String[] args){
+		Scanner sc = new Scanner(System.in);
+		try {
+			System.out.print("Enter the file name: ");
+			String filename = sc.next();
+			File file = new File(filename);
+			BufferedReader reader = new BufferedReader(new FileReader(file));
+			FileInputStream inStream = new FileInputStream(file);
+			ByteArrayOutputStream outStream = new ByteArrayOutputStream();
+
+			byte[] buffer = new byte[1024];
+			int byteRead;
+			while((byteRead = inStream.read(buffer)) != -1){
+				outStream.write(buffer, 0, byteRead);
+			}
+
+			byte[] byteArray = outStream.toByteArray();
+			System.out.println("Byte array length: " + byteArray.length);
+			
+		} catch (FileNotFoundException e) {
+			System.out.println("File not found");
+		} catch (IOException e){
+			System.out.println("Error");
+		}
+	}
+ 
+}

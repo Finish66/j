@@ -1,0 +1,1126 @@
+
+
+//File Name: q30409/ProductProcessor.java
+//==================================
+package q30409;
+import java.util.Scanner;
+
+public class ProductProcessor<T extends Number> {
+    // write your code here...
+    private T[] pro;
+    public ProductProcessor(T[]pro){
+    	this.pro = pro;
+    }
+    public void processProducts(){
+    	boolean f = false;
+    	for(T p:pro){
+    		if(p.intValue()<1000){
+    			System.out.println(p);
+    			f = true;
+    		}
+    	}
+    	if(!f){
+    		System.out.println("No lightweight products found");
+    	}
+    }
+   
+    
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Read the number of products
+        int n = scanner.nextInt();
+
+        // Create an array to store product weights
+        Integer[] products = new Integer[n];
+        for (int i = 0; i < n; i++) {
+            products[i] = scanner.nextInt();
+        }
+
+        ProductProcessor<Integer> productProcessor = new ProductProcessor<>(products);
+        productProcessor.processProducts();
+    }
+}
+
+//File Name: q30407/GenreBookProcessor.java
+//==================================
+package q30407;
+import java.util.Scanner;
+
+public class GenreBookProcessor<T extends String> {
+    // write your code here...
+    
+    private T [] book;
+    
+    public GenreBookProcessor(T[] book){
+    	this.book = book;
+    }
+    public void processBooks(String gen){
+    	boolean b = false;
+    	for(T t : book){
+    		if(t.equals(gen)){
+    			System.out.println(t);
+    			b = true;
+    		}
+    	}
+    	if(!b){
+    		System.out.println("No books found in this genre");
+    	}
+    }
+    
+    
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Read the number of books
+        int n = scanner.nextInt();
+
+        // Create an array to store genre values
+        String[] genres = new String[n];
+        for (int i = 0; i < n; i++) {
+            genres[i] = scanner.next();
+        }
+
+        // Read the genre to be processed
+        String genre = scanner.next();
+
+        GenreBookProcessor<String> processor = new GenreBookProcessor<>(genres);
+        processor.processBooks(genre);
+    }
+}
+
+
+//File Name: q30414/PackageWeightComparator.java
+//==================================
+package q30414;
+import java.util.Scanner;
+
+public class PackageWeightComparator<T extends Number> {
+    // write your code here...
+    private T[] pack;
+    private T thres;
+    
+    public PackageWeightComparator(T[] pack,T thres){
+    	this.pack = pack;
+    	this.thres = thres;
+    }
+    
+    public void compareWeights(){
+    	boolean f = false;
+    	for(T i : pack){
+    		if(i.doubleValue() > thres.doubleValue()){
+    			System.out.println(i);
+    			f = true;
+    		}
+    	}
+    	if(!f)
+    		System.out.println("No packages with higher weights found");
+    }
+    
+    
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Read the total number of packages
+        int n = scanner.nextInt();
+
+        // Create an array to store package weights
+        Double[] packages = new Double[n];
+        for (int i = 0; i < n; i++) {
+            packages[i] = scanner.nextDouble();
+        }
+
+        // Read the threshold weight
+        double threshold = scanner.nextDouble();
+
+        PackageWeightComparator<Double> comparator = new PackageWeightComparator<>(packages, threshold);
+        comparator.compareWeights();
+    }
+}
+
+//File Name: q30413/PatientAgeComparator.java
+//==================================
+package q30413;
+import java.util.Scanner;
+
+public class PatientAgeComparator<T extends Number> {
+    // write your code here...
+    
+    private T[]arr;
+    private T thres;
+    
+    public PatientAgeComparator(T[]arr,T thres){
+    	this.arr=arr;
+    	this.thres=thres;
+    }
+    
+    public void compareAges(){
+    	boolean f = false;
+    	for(T i:arr){
+    		if(i.intValue()< thres.intValue()){
+    			System.out.println(i);
+    			f = true;
+    		}
+    	}
+    	if(!f){
+    		System.out.println("No patients found");
+    	}
+    }
+    
+    
+    
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Read the total number of patients
+        int n = scanner.nextInt();
+
+        // Create an array to store patient ages
+        Integer[] patients = new Integer[n];
+        for (int i = 0; i < n; i++) {
+            patients[i] = scanner.nextInt();
+        }
+
+        // Read the threshold age
+        int threshold = scanner.nextInt();
+
+        PatientAgeComparator<Integer> comparator = new PatientAgeComparator<>(patients, threshold);
+        comparator.compareAges();
+    }
+}
+
+//File Name: q30417/StudentGradeChecker.java
+//==================================
+package q30417;
+import java.util.Scanner;
+
+public class StudentGradeChecker<T extends Number> {
+    // write your code here...
+    private T [] arr;
+    private T t ;
+    
+    public StudentGradeChecker(T[]arr,T t){
+    	this.arr = arr;
+    	this.t=t;
+    }
+    
+    public void checkGrades(){
+    	boolean f = false;
+    	
+    	for(T i : arr){
+    		if(i.intValue()>t.intValue()){
+    			System.out.println(i);
+    			f = true;
+    		}
+    	}
+    	if(!f)
+    		System.out.println("No students found");
+    }
+    
+    
+    
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Read the total number of students
+        int n = scanner.nextInt();
+
+        // Create an array to store student grades
+        Integer[] students = new Integer[n];
+        for (int i = 0; i < n; i++) {
+            students[i] = scanner.nextInt();
+        }
+
+        // Read the threshold grade
+        int threshold = scanner.nextInt();
+
+        StudentGradeChecker<Integer> checker = new StudentGradeChecker<>(students, threshold);
+        checker.checkGrades();
+    }
+}
+
+
+//File Name: q29357/LastOccurrence.java
+//==================================
+package q29357;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class LastOccurrence {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        // Input the list of strings
+        ArrayList<String> strings = new ArrayList<>();
+
+		// write the code..
+		String s ;
+		while((s=scanner.next()).matches("[a-zA-Z]+")){
+			strings.add(s);
+		}
+
+		String find = scanner.next();
+		boolean b = false;
+		for(int i = strings.size()-1;i>=0;i--){
+			if(strings.get(i).equals(find)){
+				System.out.println(i);
+				b = true;
+				break;
+			}
+		}
+		if(!b)
+			System.out.println("Element not found");
+    }
+}
+
+//File Name: q29359/RemoveAdjacent.java
+//==================================
+package q29359;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class RemoveAdjacent {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        // Input the list of characters
+        ArrayList<Character> characters = new ArrayList<>();
+
+		// write the code..
+		char s ;
+		while(scanner.hasNext("[a-zA-Z]")){
+			characters.add(scanner.next().charAt(0));
+		}
+		
+		ArrayList<Character> res = remove(characters);
+		System.out.println(res);
+    }
+		public static ArrayList<Character> remove(ArrayList<Character>charr){
+			if(charr.isEmpty()){
+				return new ArrayList<Character>();
+			}
+			ArrayList<Character> res = new ArrayList<>();
+			char prev = charr.get(0);
+			res.add(prev);
+			for(int i = 1;i<charr.size();i++){
+				char curr = charr.get(i);
+				if(prev != curr){
+					res.add(curr);
+					prev = curr;
+				}
+			}
+			return res;
+		}
+		
+
+    // }
+}
+
+//File Name: q29079/GroceryStoreCheckout.java
+//==================================
+package q29079;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class GroceryStoreCheckout {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<Integer> prices = new ArrayList<>();
+
+	// write the code..
+		int i ;
+		int sum = 0;
+		while((i = scanner.nextInt())>=0){
+			prices.add(i);
+			sum+=i;
+		}
+		System.out.println(sum);
+	
+    }
+}
+
+//File Name: q29097/ListIntersectionUnion.java
+//==================================
+package q29097;
+// import java.util.ArrayList;
+// import java.util.Scanner;
+
+// // public class ListIntersectionUnion {
+// //     public static void main(String[] args) {
+// //         Scanner scanner = new Scanner(System.in);
+
+// //         // Input the first list of numbers
+// //         ArrayList<Integer> list1 = new ArrayList<>();
+       
+//         // write the code..
+// import java.util.*;  
+// public class ListIntersectionUnion { 
+// 	public static void main(String[] args) { 
+// 		Scanner scanner = new Scanner(System.in); 
+// 		// Input the first list of numbers 
+// 		ArrayList<Integer> list1 = new ArrayList<>();
+//         while(scanner.hasNextInt()){
+//         	list1.add(scanner.nextInt());
+//         }
+        
+//         // Input the second list of numbers
+//         ArrayList<Integer> list2 = new ArrayList<>();
+       
+//       while(scanner.hasNextInt()){
+// 			list2.add(scanner.nextInt());
+//       }
+       
+//       Set<Integer> u1 = new HashSet<>(list1);
+//       Set<Integer> u2 = new HashSet<>(list2);
+//       u1.retainAll(u2);
+//       System.out.println(new ArrayList<>(u1));
+//       Set<Integer> i1 = new HashSet<>(list1);
+//       Set<Integer> i2 = new HashSet<>(list2);
+//       i1.addAll(i2);
+//       System.out.println(new ArrayList<>(i1));
+       
+//     }
+// }
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class ListIntersectionUnion {
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		
+		// Input the first list of numbers
+		ArrayList<Integer> list1 = new ArrayList<>();
+		String line = scanner.nextLine();
+		String[] nums1 = line.split("\\s+");
+		for (String numStr : nums1) {
+			list1.add(Integer.parseInt(numStr));
+		}
+		
+		// Input the second list of numbers
+		ArrayList<Integer> list2 = new ArrayList<>();
+		line = scanner.nextLine();
+		String[] nums2 = line.split("\\s+");
+		for (String numStr : nums2) {
+			list2.add(Integer.parseInt(numStr));
+		}
+		
+		ArrayList<Integer> intersection = new ArrayList<>();
+		for (Integer num : list1) {
+			if (list2.contains(num) && !intersection.contains(num)) {
+				intersection.add(num);
+			}
+		}
+		System.out.println(intersection);
+		
+		ArrayList<Integer> union = new ArrayList<>(list1);
+		for (Integer num : list2) {
+			if (!union.contains(num)) {
+				union.add(num);
+			}
+		}
+		System.out.println(union);
+		
+		scanner.close();
+	}
+}
+
+//File Name: q30036/PositiveNegative.java
+//==================================
+package q30036;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class PositiveNegative {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<Integer> positiveIntegers = new ArrayList<>();
+        ArrayList<Integer> negativeIntegers = new ArrayList<>();
+ 
+		// write the code..
+		while(scanner.hasNextInt()){
+			int a = scanner.nextInt();
+			if(a>=0)
+				positiveIntegers.add(a);
+			else 
+				negativeIntegers.add(a);
+		}
+		
+		System.out.println(positiveIntegers);
+		System.out.println(negativeIntegers);
+		
+    }
+}
+
+
+//File Name: q29308/BookSearch.java
+//==================================
+package q29308;
+import java.util.Scanner;
+import java.util.TreeSet;
+
+public class BookSearch {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        TreeSet<Integer> publicationYears = new TreeSet<>();
+
+		// write the code..
+		
+		String [] s = scanner.nextLine().split("\\s+");
+		for(String c:s){
+			publicationYears.add(Integer.parseInt(c));
+		}
+		
+		int min = scanner.nextInt();
+		int max = scanner.nextInt();
+		TreeSet<Integer> ans = new TreeSet<>();
+		
+		for(int i : publicationYears){
+			if(i>=min && i<=max){
+				ans.add(i);
+			}
+		}
+		
+		if(ans.isEmpty()){
+			System.out.println("No books found");
+			return;
+		}
+		
+		System.out.println(ans);
+    }
+}
+
+//File Name: q29293/RemoveFromTreeSet.java
+//==================================
+package q29293;
+import java.util.Scanner;
+import java.util.TreeSet;
+
+public class RemoveFromTreeSet {
+    public static void main(String[] args) {
+        TreeSet<String> treeSet = new TreeSet<>();
+		Scanner scanner = new Scanner(System.in);
+	// write the code..
+		String s;
+		while(!(s=scanner.nextLine()).equals("done")){
+			treeSet.add(s);
+		}
+		System.out.println("TreeSet before removal: "+treeSet);
+		
+		String i = scanner.nextLine();
+		if(treeSet.contains(i)){
+			treeSet.remove(i);
+			System.out.println("TreeSet after removal: "+treeSet);
+		}
+		else {
+			System.out.println("Item not found");
+		}
+    }
+}
+
+//File Name: q29320/EntityFilter.java
+//==================================
+package q29320;
+import java.util.Scanner;
+import java.util.Set;
+import java.util.TreeSet;
+
+public class EntityFilter {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String input = scanner.nextLine();
+        Set<Integer> entityIDs = new TreeSet<>();
+ 
+		//write the code..
+		String[]s = input.split("\\s+");
+		for(String c:s){
+			entityIDs.add(Integer.parseInt(c));
+		}
+		Set<Integer> ans = new TreeSet<>();
+		for(int i : entityIDs){
+			if(i%2==0)
+				ans.add(i);
+		}
+		
+		if(ans.isEmpty()){
+			System.out.println("All entity IDs are odd");
+			return;
+		}
+		for(int i : ans){
+			System.out.print(i+" ");
+		}
+		
+    }
+}
+
+//File Name: q29334/RemoveDuplicateWords.java
+//==================================
+package q29334;
+import java.util.Scanner;
+import java.util.TreeSet;
+
+public class RemoveDuplicateWords {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String sentence = scanner.nextLine();
+        String[] words = sentence.split("\\s+");
+        TreeSet<String> uniqueWords = new TreeSet<>();
+
+		// write the code..
+		for(String s : words){
+			uniqueWords.add(s);
+		}
+		StringBuilder sb = new StringBuilder();
+		for(int i = 0;i<words.length;i++){
+			if(uniqueWords.contains(words[i])){
+				// System.out.print(words[i]);
+				sb.append(words[i]);
+				// if(i<words.length-1)
+				// 	System.out.print(" ");
+				sb.append(" ");
+				uniqueWords.remove(words[i]);
+			}
+		}
+		// sb.trim();
+		System.out.println(sb.toString().trim());
+    }
+}
+
+//File Name: q29345/MissingNumbersFinder.java
+//==================================
+package q29345;
+import java.util.Scanner;
+import java.util.TreeSet;
+
+public class MissingNumbersFinder {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int lowerBound = scanner.nextInt();
+        int upperBound = scanner.nextInt();
+        scanner.nextLine(); // Consume newline
+        String[] elements = scanner.nextLine().split("\\s+");
+        TreeSet<Integer> numbers = new TreeSet<>();
+
+		// write the code..
+		for(String s : elements){
+			numbers.add(Integer.parseInt(s));
+		}
+		for(int i = lowerBound;i<=upperBound;i++){
+			if(!numbers.contains(i))
+				System.out.println(i);
+		}
+    }
+}
+
+//File Name: q29151/ContactManager.java
+//==================================
+package q29151;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+// write the code..
+
+public class ContactManager {
+
+	public static HashMap <String,String> mp = new HashMap<>();
+	public static Scanner scanner = new Scanner(System.in);
+  
+    private static void addContact() {
+        
+     // write the code..   
+	    System.out.print("Name: ");
+		String name = scanner.nextLine();
+		System.out.print("Phone number: ");
+		String number = scanner.nextLine();
+		mp.put(name,number);
+		System.out.println("Contact added");
+    }
+
+    private static void deleteContact() {
+     
+     // write the code..
+     System.out.print("Name to delete: ");
+     String s = scanner.nextLine();
+     if(mp.containsKey(s)){
+     	mp.remove(s);
+     	System.out.println("Contact deleted");
+     }else {
+     	System.out.println("Contact not found");
+     }
+        
+    }
+
+    private static void searchContact() {
+        
+        // write the code..
+        System.out.print("Name to search: ");
+        String s = scanner.nextLine();
+        if(mp.containsKey(s)){
+        	System.out.println("Phone: "+mp.get(s));
+        }else{
+        	System.out.println("Contact not found");
+        }
+        
+    }
+    
+        public static void main(String[] args) {
+        boolean running = true;
+        while (running) {
+            System.out.println("1. Add Contact");
+            System.out.println("2. Delete Contact");
+            System.out.println("3. Search Contact by Name");
+            System.out.println("4. Exit");
+
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // Consume newline
+
+            switch (choice) {
+                case 1:
+                    addContact();
+                    break;
+                case 2:
+                    deleteContact();
+                    break;
+                case 3:
+                    searchContact();
+                    break;
+                case 4:
+                    running = false;
+                    break;
+                default:
+                    System.out.println("Invalid choice");
+            }
+        }
+    }
+}
+
+//File Name: q29133/AnagramChecker.java
+//==================================
+package q29133;
+import java.util.HashMap;
+import java.util.Scanner;
+
+public class AnagramChecker {
+
+
+	public static boolean areAnagrams(String str1, String str2) {
+		if (str1.length() != str2.length()) {
+			return false;
+		}
+		
+		HashMap<Character, Integer> charFreq = new HashMap<>();
+		for (char c : str1.toCharArray()) {
+			charFreq.put(c, charFreq.getOrDefault(c, 0) + 1);
+		}
+		
+		for (char c : str2.toCharArray()) {
+			if (!charFreq.containsKey(c)) {
+				return false;
+			}
+			int freq = charFreq.get(c);
+			if (freq == 0) {
+				return false;
+			}
+			charFreq.put(c, freq - 1);
+		}
+		
+		for (int freq : charFreq.values()) {
+			if (freq != 0) {
+				return false;
+			}
+		}
+		
+		return true;
+	}
+	
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String str1 = scanner.nextLine();
+        String str2 = scanner.nextLine();
+
+        if (areAnagrams(str1, str2)) {
+            System.out.println(str1 + " and " + str2 + " are anagrams");
+        } else {
+            System.out.println(str1 + " and " + str2 + " are not anagrams");
+        }
+        scanner.close();
+    }
+}
+
+//File Name: q29144/AttendanceTracker.java
+//==================================
+package q29144;
+import java.util.*;
+
+public class AttendanceTracker {
+
+    private static void markAttendance(Scanner scanner, Map<String, Map<String, String>> attendanceRecords) {
+        
+        // write the code..
+        System.out.print("Class name: ");
+        String className = scanner.nextLine();
+        
+        System.out.print("Student name: ");
+        String studentName = scanner.nextLine();
+        
+        System.out.print("Attendance (present/absent): ");
+        String attendance = scanner.nextLine();
+        
+        attendanceRecords.putIfAbsent(className, new HashMap<>());
+        attendanceRecords.get(className).put(studentName, attendance);
+        
+        System.out.println("Attendance marked");
+        
+    }
+
+    private static void generateAttendanceReport(Scanner scanner, Map<String, Map<String, String>> attendanceRecords) {
+       
+        // write the code..
+        System.out.print("Class name: ");
+        String className = scanner.nextLine();
+        
+        // System.out.println("Attendance Report:");
+        if (!attendanceRecords.containsKey(className)) {
+        	System.out.println("No attendance records found\n");
+        	// return;
+        }
+        if (attendanceRecords.containsKey(className)) {
+        	System.out.println("Attendance Report:");
+        	Map<String, String> classAttendance = attendanceRecords.get(className);
+        	for (Map.Entry<String, String> entry : classAttendance.entrySet()) {
+        		System.out.println(entry.getKey() + ": " + entry.getValue());
+        	}
+        } else {
+        	System.out.println("Class not found");
+        }
+        
+    }
+    
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Map<String, Map<String, String>> attendanceRecords = new HashMap<>();
+
+        while (true) {
+            System.out.println("1. Mark Attendance\n2. Generate Attendance Report\n3. Exit");
+            System.out.print("Choose an option: ");
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // Consume newline
+
+            switch (choice) {
+                case 1:
+                    markAttendance(scanner, attendanceRecords);
+                    break;
+                case 2:
+                    generateAttendanceReport(scanner, attendanceRecords);
+                    break;
+                case 3:
+                    scanner.close();
+                    return;
+                default:
+                    System.out.println("Invalid option");
+            }
+        }
+    }
+}
+
+//File Name: q29249/SupermarketCheckout.java
+//==================================
+package q29249;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+
+public class SupermarketCheckout {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Queue<String> checkoutLine = new LinkedList<>();
+        
+        while (true) {
+            System.out.println("1. Add Customer to Line");
+            System.out.println("2. Process Customer");
+            System.out.println("3. View Checkout Line Status");
+            System.out.println("4. Exit");
+
+		// write the code..
+			int in = scanner.nextInt();
+			scanner.nextLine();
+			switch(in){
+				case 1:
+					String a = scanner.nextLine();
+					checkoutLine.add(a);
+					System.out.println(a+" added");
+					break;
+				case 2:
+					if(checkoutLine.isEmpty()){
+						System.out.println("Checkout line is empty");
+						break;
+					}
+					System.out.println("Processing customer: "+checkoutLine.poll());
+					break;
+				case 3:
+					if(checkoutLine.isEmpty()){
+						System.out.println("Checkout line is empty");
+						break;
+					}
+					else {
+						int n = 1;
+						for(String i : checkoutLine){
+							if(i.equals("null")){
+								System.out.println("Checkout line is empty");
+								break;
+							}
+							System.out.println((n++) +". "+ i);
+						}
+					}
+					break;
+				case 4:
+					return;
+				default:
+					System.out.println("Invalid choice");
+			}
+		}
+    }
+}
+
+//File Name: q29477/MessageQueueSystem.java
+//==================================
+package q29477;
+import java.util.ArrayDeque;
+import java.util.Queue;
+import java.util.Scanner;
+
+public class MessageQueueSystem {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Queue<String> messageQueue = new ArrayDeque<>();
+        
+        while (true) {
+            System.out.println("1. Send Message");
+            System.out.println("2. Receive Message");
+            System.out.println("3. View Queue");
+            System.out.println("4. Exit");
+
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // Consume newline
+            switch(choice){
+            	case 1:
+            		String msg=scanner.nextLine();
+            		messageQueue.offer(msg);
+            		System.out.println("Message sent: "+msg);
+            		break;
+            	case 2:
+            		if(messageQueue.isEmpty()){
+            			System.out.println("Message queue is empty");
+            			break;
+            		}
+            		System.out.println("Received message: "+messageQueue.poll());
+            		break;
+            	case 3:
+            		boolean b = messageQueue.isEmpty();
+            		// System.out.println(b);
+            		if(b){
+            			System.out.println("Message queue is empty");
+            			break;
+            		}
+            		for(String i:messageQueue){
+            			System.out.println(i);
+            		}
+            		break;
+            	case 4:
+            		return;
+            	default:
+            		System.out.println("Invalid choice");
+            		break;
+            }
+		// write the code..
+}
+    }
+}
+
+//File Name: q29243/QueueManagementSystem.java
+//==================================
+package q29243;
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.Queue;
+import java.util.Scanner;
+
+public class QueueManagementSystem {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Queue<String> printQueue = new ArrayDeque<>();
+        
+        while (true) {
+            System.out.println("1. Add Print Job");
+            System.out.println("2. Remove Print Job");
+            System.out.println("3. View Queue Status");
+            System.out.println("4. Exit");
+            System.out.print("Enter your choice: ");
+            
+		// write the code..
+			int n = scanner.nextInt();
+			scanner.nextLine();
+			switch(n){
+				case 1:
+					String s = scanner.nextLine();
+					printQueue.offer(s);
+					System.out.println(s+" added");
+					break;
+				case 2:
+					if(printQueue.isEmpty()){
+						System.out.println("Queue is empty");
+					}else 
+						System.out.println(printQueue.poll() + " removed");
+					break;
+				case 3:
+					if(printQueue.isEmpty()){
+						System.out.println("Queue is empty");
+					}else {
+						System.out.println("Current Queue Status:");
+						int i = 1;
+						for(String st:printQueue){
+							System.out.println((i++)+". "+st);
+						}
+					}
+					break;
+				case 4:
+					return;
+				default:
+					System.out.println("Invalid choice");
+			}
+        }
+    }
+}
+
+//File Name: q29242/MinimumInSlidingWindow.java
+//==================================
+package q29242;
+// import java.util.ArrayDeque;
+// import java.util.Deque;
+// import java.util.Scanner;
+
+// public class MinimumInSlidingWindow {
+//     public static void main(String[] args) {
+//         Scanner scanner = new Scanner(System.in);
+//         String[] elements = scanner.nextLine().split(" ");
+//         int[] arr = new int[elements.length];
+//         for (int i = 0; i < elements.length; i++) {
+//             arr[i] = Integer.parseInt(elements[i]);
+//         }
+//         int k = scanner.nextInt();
+//         printMinInSlidingWindow(arr, k);
+//     }
+
+//     private static void printMinInSlidingWindow(int[] arr, int k) {
+//         Deque<Integer> deque = new ArrayDeque<>();
+        
+//         // write the code..
+        
+        
+//     }
+// }
+
+
+
+
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.Scanner;
+
+public class MinimumInSlidingWindow {
+	
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		
+		String[] elements = scanner.nextLine().split(" ");
+		int[] arr = new int[elements.length];
+		for (int i = 0; i < elements.length; i++) {
+			arr[i] = Integer.parseInt(elements[i]);
+		}
+		
+		int k = scanner.nextInt();
+		printMinInSlidingWindow(arr, k);
+	}
+	
+	private static void printMinInSlidingWindow(int[] arr, int k) {
+		Deque<Integer> deque = new ArrayDeque<>();
+		
+		for (int i = 0; i < k; i++) {
+			while (!deque.isEmpty() && arr[i] <= arr[deque.peekLast()]) {
+				deque.removeLast();
+			}
+			deque.addLast(i);
+		}
+		
+		for (int i = k; i < arr.length; i++) {
+			System.out.print(arr[deque.peekFirst()] + " ");
+			
+			while (!deque.isEmpty() && deque.peekFirst() <= i - k) {
+				deque.removeFirst();
+			}
+			
+			while (!deque.isEmpty() && arr[i] <= arr[deque.peekLast()]) {
+				deque.removeLast();
+			}
+			
+			deque.addLast(i);
+		}
+		
+		System.out.print(arr[deque.peekFirst()]);
+	}
+}
+
+//File Name: q29250/QueueManagementSystem.java
+//==================================
+package q29250;
+import java.util.ArrayDeque;
+import java.util.Queue;
+import java.util.Scanner;
+
+public class QueueManagementSystem {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Queue<String> queue = new ArrayDeque<>();
+        
+        while (true) {
+            System.out.println("1. Enqueue");
+            System.out.println("2. Dequeue");
+            System.out.println("3. Display Queue");
+            System.out.println("4. Exit");
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // Consume newline
+ 
+		// write the code..
+			switch(choice){
+				case 1:
+					String a = scanner.nextLine();
+					queue.offer(a);
+					System.out.println(a+" has joined");
+					break;
+				case 2:
+					if(queue.isEmpty())
+						System.out.println("Queue is empty");
+					else
+						System.out.println("Serving "+queue.poll());
+					break;
+				case 3:
+					if(queue.isEmpty())
+						System.out.println("Queue is empty");
+					else 
+						for(String s :queue){
+							System.out.println(s);
+						}
+					break;
+				case 4:
+					return;
+				default :
+					System.out.println("Invalid choice");
+			}
+        }
+    }
+}
+

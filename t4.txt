@@ -1,0 +1,541 @@
+// Unit 4
+
+package Main;
+import java.time.format.*;
+import java.time.temporal.ChronoUnit;
+import java.time.*;
+import java.util.*;
+
+public class DateandTime {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        // &Local Date
+        LocalDate today = LocalDate.now();
+        LocalDate specificDate = LocalDate.of(0, 0, 0);
+
+        today.getYear();
+        today.getMonth();
+        today.getDayOfMonth();
+        today.getDayOfWeek();
+
+        LocalDate yesterday = today.plusDays(1);
+        LocalDate tommrrow = today.minusDays(1);
+        boolean isafter = today.isAfter(specificDate);
+        boolean isbefore = today.isBefore(specificDate);
+
+        // & Date Time Formatter
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String string = today.format(DateTimeFormatter.ofPattern("MM-AA-nnn"));
+        LocalDate newDate = LocalDate.parse(sc.nextLine(), formatter);
+        String stringdate = formatter.format(newDate);
+        String Datestring = newDate.format(formatter);
+
+        // &Chronic Unit
+
+        long days = ChronoUnit.DAYS.between(today, specificDate);
+        long hours = ChronoUnit.HOURS.between(today, specificDate);
+        LocalDate new1 = today.plus(2, ChronoUnit.WEEKS);
+        LocalDate new2 = today.minus(2, ChronoUnit.HOURS);
+        
+
+    }
+}
+// // & Date
+// Date newdate = new Date();
+// Date otherDate = new Date();
+
+// System.out.println(newdate);
+// System.out.println(newdate.toString());
+// System.out.format("c", newdate);
+// // boolean isAfter = newdate.after(otherDate); // Check if date is after
+// // otherDate
+// // boolean isBefore = otherDate.before(otherDate);
+
+// // & Local Date
+// LocalDate dt = LocalDate.parse("Helll");
+// LocalDate today = LocalDate.now();
+// LocalDate specificdate = LocalDate.of(2023, Month.MAY, 5);
+
+// today.getYear();
+// today.getMonth();
+// today.getDayOfYear();
+// today.getDayOfMonth();
+// today.getDayOfWeek();
+
+// LocalDate tomorrow = today.plusDays(1);
+// LocalDate previousMonthSameDay = today.minusMonths(1);
+
+// boolean isBefore = today.isBefore(specificdate);
+// boolean isAfter = today.isAfter(specificdate);
+
+// // & Date Format
+// SimpleDateFormat format = new SimpleDateFormat("c");
+// String formatedDate = format.format(newdate);
+// System.out.println(format.format(newdate));
+
+// // &Georgian calendar
+// String months[] = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug",
+// "Sep", "Oct", "Nov", "Dec" };
+// GregorianCalendar gcalendar = new GregorianCalendar();
+// System.out.println(gcalendar.get(Calendar.DATE));
+// System.out.println(months[gcalendar.get(Calendar.MONTH)]);
+// System.out.println(gcalendar.get(Calendar.YEAR));
+// System.out.print(gcalendar.get(Calendar.HOUR));
+// System.out.print(gcalendar.get(Calendar.MINUTE));
+// System.out.println(gcalendar.get(Calendar.SECOND));
+// System.out.println(gcalendar.isLeapYear(gcalendar.get(Calendar.YEAR)));
+
+// java.time.LocalDate: Represents a date without a time component.
+// java.time.LocalTime: Represents a time without a date component.
+// java.time.LocalDateTime: Represents a date and time without a time zone
+// component.
+// java.time.Period: Represents a date-based amount of time.
+// java.time.format.DateTimeFormatter: Formats and parses date-time objects.
+// java.time.temporal.ChronoUnit: Represents units of time (e.g., days, months,
+// years) for date-time calculations.
+
+// boolean after(Date date): Returns true if the invoking Date object contains a
+// date that is later than the one specified by date, otherwise, it returns
+// false.
+// boolean before(Date date): Returns true if the invoking Date object contains
+// a date that is earlier than the one specified by date, otherwise, it returns
+// false.
+
+// int compareTo(Date date): Compares the value of the invoking object with that
+// of date. Returns 0 if the values are equal. Returns a negative value if the
+// invoking object is earlier than date. Returns a positive value if the
+// invoking object is later than date.
+// int compareTo(Object obj): Operates identically to compareTo(Date) if obj is
+// of class Date. Otherwise, it throws a ClassCastException.
+// boolean equals(Object date): Returns true if the invoking Date object
+// contains the same time and date as the one specified by date, otherwise, it
+// returns false.
+
+// String toString(): Converts the invoking Date object into a string and
+// returns the result.
+
+
+class A {
+	private int value;
+	//below is an example of non-static initialization block
+	{
+		value = 3;
+		System.out.println("In non-static init block 1");
+	}
+	public A() {
+		System.out.println("In constructor");
+		System.out.println("value = " + value);
+	}
+	//below is an example of another non-static initialization block
+	{
+		System.out.println("In non-static init block 2");
+	}
+}
+
+// Static initialization and it’s executed for first object created
+
+public class StaticInitBlockDemo {
+	public static void main(String[] args) {
+		A a1 = new A();
+		A a2 = new A();
+	}
+}
+
+class A {
+	//below is an example of static initialization block
+	static {
+		System.out.println("In static init block 1");
+	}
+	public A() {
+		System.out.println("In constructor");
+	}
+	//below is an example of another static initialization block
+	static {
+		System.out.println("In static init block 2");
+	}
+}
+
+class A {
+	static int a;
+	int b;
+	public static int getA() {
+		return a;
+	}
+	public int getB() {
+		return b;
+	}
+}
+
+class A {
+	static class B {
+		private int b;
+		public B(int b) {
+			this.b = b;
+		}
+	}
+}
+
+package q11294;
+public class Namer {
+	private String name;
+	public Namer(String name) {
+		this.name = name;
+	}
+	class Prefixer {
+		private String prefix;
+		private Prefixer(String prefix) {
+			this.prefix = prefix;
+		}
+		public String getCompleteName() {
+			return prefix + " " + name;
+		}
+	}
+	public static void main(String[] args) {
+		Namer namer =  new Namer("Doodle");
+		Namer.Prefixer prefixer = namer.new Prefixer("Mr.");
+		System.out.println(prefixer.getCompleteName());
+	}
+}
+
+// Static nested class
+
+class A { //this is called a top-level class
+	class B { //this is an inner class
+	}
+	static class C { //this is a nested class
+	}
+}
+
+
+public class A{
+
+	public class B{
+
+		public B(){
+			System.out.println("In inner class B's constructor");
+		}
+	}
+
+	static class C{
+
+		public C(){
+			System.out.println("In static nested class C's constructor");
+		}
+	}
+
+	public static void main(String[] args){
+		A a = new A();   
+		A.B b = a.new B();   
+		A.C c = new A.C();
+	}
+}
+
+
+// Local class
+
+class A { //this is called a top-level class
+	class B { //this is an inner class
+	}
+	static class C { //this is an inner class
+	}
+	public void someMethodInClassA() {
+		class D { // local class
+		}
+	}
+}
+
+// Note that local classes cannot have static methods or interfaces as members. We can have fields marked as static provided they are also marked as final (such fields are called as constants).
+
+public class FactorialCalculator {
+    public static void main(String[] args) {
+        FactorialCalculator calculator = new FactorialCalculator();
+        calculator.PrintFactorial();
+    }
+
+    public void PrintFactorial() {
+        Scanner scanner = new Scanner(System.in);
+        int inputNumber = scanner.nextInt();
+
+		class Factorial{
+			int n;
+			public Factorial(int n){
+				this.n = n;
+			}
+
+			public int calculateFactorial(){
+				int ans = 1;
+
+				for(int i = 1;i <= n ;i++){
+					ans *= i;
+				}
+				return ans;
+			}
+		}
+        // Create an instance of the local class with the given value
+        Factorial factorialInstance = new Factorial(inputNumber);
+        int result = factorialInstance.calculateFactorial();
+        System.out.println(result);
+    }
+}
+
+
+interface Printer { //this is a top-level interface
+	public void printMe();
+}
+class A {  //this is a normal top-level class
+	public static void main(String[] args) {
+		class PrinterImpl implements Printer { // an example of a normal local class
+			public void printMe() {
+				//do something....
+			}
+		}
+
+		Printer myPrinter1 = new PrinterImpl();
+
+		Printer myPrinter2 = new Printer() { // an example of an anonymous class 
+			public void printMe() {
+				//do something....
+			}
+		};
+		
+		myPrinter1.printMe();
+		myPrinter2.printMe();
+	}
+}
+
+// Define a functional interface
+@FunctionalInterface
+interface Operation {
+    int perform(int a, int b);
+}
+
+public class LambdaExample {
+    public static void main(String[] args) {
+        // Implement the functional interface using a lambda expression
+        Operation addition = (a, b) -> a + b;
+        Operation multiplication = (a, b) -> a * b;
+
+        // Use the lambda expressions
+        int result1 = addition.perform(5, 3); // result1 = 8
+        int result2 = multiplication.perform(5, 3); // result2 = 15
+
+        System.out.println("Result 1: " + result1);
+        System.out.println("Result 2: " + result2);
+    }
+}
+
+
+@FunctionalInterface
+interface NumberSquarer{
+	int square(int a);
+}
+
+public class SquareNumber {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int inputNumber = scanner.nextInt();
+
+        NumberSquarer numberSquarer = n -> n * n;
+
+        int squaredNumber = numberSquarer.square(inputNumber);
+
+        System.out.println(squaredNumber);
+
+        scanner.close();
+    }
+}
+
+
+import java.util.ArrayList;
+class LambdaExpression{
+	public static void main(String args[]){
+		ArrayList<Integer> ArrList = new ArrayList<Integer>();
+		ArrList.add(120);
+		ArrList.add(303);
+		ArrList.add(308);
+		ArrList.add(555);
+		//Complete the code for displaying elements using lambda expression
+		ArrList.forEach(n -> System.out.println(n));
+		System.out.println("All odd elements displayed");
+		ArrList.forEach(n -> {if (n%2 != 0) System.out.println(n);});
+		// ArrList.forEach(n -> {     }   // Complete the Lambda
+		
+	}
+}
+import java.util.*;
+	public static void main(String ... args) {
+		Date thisMoment = new Date();
+		long millisecondsSinceEpochStart = thisMoment.getTime();
+		System.out.println("This Moment : " + thisMoment);
+		System.out.println("Total milli seconds from epoch to this moment : " + millisecondsSinceEpochStart);
+	}
+
+DateFormat df1 = DateFormat.getInstance(); 
+// the above code creates a date and time formatter instance which uses the SHORT style
+
+DateFormat df2 = DateFormat.getDateInstance(); 
+// the above line creates a date foramatter instance with system's Locale  
+
+DateFormat df3 = DateFormat.getDateInstance(DateFormat.LONG, Locale.FRANCE);
+// the above line creates a date formatter instance with French Locale in long format
+
+import java.util.*;
+import java.text.*;
+public class DateFormatInJapanMain {
+	public static void main(String ...args) {
+		Calendar c = Calendar.getInstance();
+		c.set(Integer.parseInt(args[0]), Integer.parseInt(args[1]) - 1, Integer.parseInt(args[2]), 10, 00, 00);
+		System.out.println(DateFormat.getDateInstance().format(c.getTime()) + " in Japan is: " + DateFormatInJapan.getJapaneseShortDate(c.getTime()));
+	}
+}
+
+
+import java.util.*;
+import java.text.*;
+public class SimpleDateFormatDemo {
+	public static void main(String ... args) throws ParseException {
+		String dateText = " ";
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+		Date a = simpleDateFormat.parse("15-08-1947");
+		System.out.println("parsedDate : " + a);
+	}
+}
+
+import java.time.*;
+import java.time.temporal.*;
+public class LocalDateDemo {
+	public static void main(String ... args) {
+		
+		
+		LocalDate javaBirthday=LocalDate.of(1995,Month.MAY,23);
+		TemporalAdjuster adjuster = TemporalAdjusters.next(DayOfWeek.SUNDAY);
+		LocalDate nextSunday = javaBirthday.with(adjuster);
+		System.out.printf("Java's birthday was on %s, and the cake was cut on next Sunday : %s.%n",javaBirthday,nextSunday);
+		/*print the statement as follows:
+		Java's birthday was on DATE, and the cake was cut on next Sunday : DATE*/
+	}
+}
+
+/* 
+1. LocalDate:
+
+The LocalDate class represents a date without a time component in the ISO-8601 calendar system. It is an immutable class, meaning that once an instance is created, its value cannot be changed. Here are some key points about LocalDate:
+
+It represents a date in the year-month-day format (yyyy-MM-dd).
+It provides methods for retrieving individual components of the date, such as getYear(), getMonthValue(), and getDayOfMonth().
+You can create a LocalDate instance using static factory methods like LocalDate.now() (for the current date), LocalDate.of(year, month, day), or LocalDate.parse(dateString, formatter).
+LocalDate instances can be compared using relational operators like isBefore(), isAfter(), and equals().
+You can perform date calculations like adding or subtracting days, months, or years using methods like plusDays(), minusMonths(), and withYear().
+LocalDate instances do not store time zone information and represent a date in the ISO calendar system, which is a proleptic Gregorian calendar.
+
+2. LocalTime:
+The LocalTime class represents a time without a date component. It is also an immutable class. Here are some key points about LocalTime:
+It represents a time in the hour-minute-second-nanosecond format (HH:mm:ss.nnnnnnnnn).
+It provides methods for retrieving individual components of the time, such as getHour(), getMinute(), and getSecond().
+You can create a LocalTime instance using static factory methods like LocalTime.now() (for the current time), LocalTime.of(hour, minute, second, nanosecond), or LocalTime.parse(timeString, formatter).
+LocalTime instances can be compared using relational operators like isBefore(), isAfter(), and equals().
+You can perform time calculations like adding or subtracting hours, minutes, seconds, or nanoseconds using methods like plusHours(), minusMinutes(), and withSecond().
+LocalTime instances do not store time zone information and represent a time in the context of a 24-hour clock.
+
+Both LocalDate and LocalTime classes are designed to be simple and efficient when dealing with dates and times in a local context, without the need for time zone information. However, if you need to represent a date and time with a time zone, you should use the ZonedDateTime or OffsetDateTime classes.
+Here's an example demonstrating the usage of LocalDate and LocalTime:
+
+// Creating a LocalDate instance
+LocalDate currentDate = LocalDate.now();
+System.out.println("Current Date: " + currentDate);
+// Creating a LocalTime instance
+LocalTime currentTime = LocalTime.now();
+System.out.println("Current Time: " + currentTime);
+// Creating a LocalDate instance from individual components
+LocalDate anotherDate = LocalDate.of(2023, 5, 15);
+System.out.println("Another Date: " + anotherDate);
+// Adding days to a LocalDate
+LocalDate futureDate = anotherDate.plusDays(7);
+System.out.println("Future Date: " + futureDate);
+// Creating a LocalTime instance from individual components
+LocalTime specifiedTime = LocalTime.of(14, 30, 0);
+System.out.println("Specified Time: " + specifiedTime);
+
+
+By using LocalDate and LocalTime, you can efficiently work with dates and times in a local context, perform calculations, and format or parse date-time values as needed.
+3. LocalDateTime:
+
+The LocalDateTime class represents a date-time without a time zone in the ISO-8601 calendar system. It is an immutable class that combines the features of LocalDate (representing a date) and LocalTime (representing a time) into a single instance.
+
+LocalDateTime instances represent a date-time in the year-month-day-hour-minute-second-nanosecond format (yyyy-MM dd'T'HH:mm:ss.nnnnnnnnn), where the 'T' separates the date and time components.
+
+You can create a LocalDateTime instance using static factory methods like LocalDateTime.now() (for the current date and time), LocalDateTime.of(year, month, day, hour, minute, second, nanoSecond), or LocalDateTime.parse(dateTimeString, formatted).
+You can also create a LocalDateTime instance by combining a LocalDate and LocalTime using LocalDateTime.of(localDate, localTime).
+LocalDateTime provides methods for retrieving individual components of the date-time, such as getYear(), getMonthValue(), getDayOfMonth(), getHour(), getMinute(), and getSecond().
+You can perform date-time calculations like adding or subtracting days, months, years, hours, minutes, or seconds using methods like plusDays(), minusMonths(), withYear(), plusHours(), minusMinutes(), and withSecond().
+LocalDateTime instances can be compared using relational operators like isBefore(), isAfter(), and equals().
+
+
+ */
+
+Sorter sorter = new Sorter(){
+        	public void sort(int[] num){
+        		java.util.Arrays.sort(num);
+        		num = numbers;
+        	}
+        };
+        
+        sorter.sort(numbers);
+
+
+public double perimeter(){
+		return java.lang.Math.PI * radius * 2;
+	}
+	
+	public double area(){
+		return java.lang.Math.PI * radius * radius;
+	}
+
+
+import java.util.*;
+import java.time.*;
+import java.time.format.*;
+
+
+public class LibraryBooking {
+    
+	public static void main(String[] args){
+		Scanner sc = new Scanner(System.in);
+		
+		String st = sc.nextLine();
+		LocalDate std = LocalDate.parse(st, DateTimeFormatter.ofPattern("dd-MM-yyy"));
+		int days = sc.nextInt();
+		LocalDate end = std.plusDays(days);
+		System.out.println(end.format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
+		sc.close();
+	}
+
+    
+}
+
+
+import java.time.*;
+import java.time.format.*;
+
+public class AgeDifference {
+
+	public static void main(String[] args){
+		Scanner sc  = new Scanner(System.in);
+		
+		String ad = sc.nextLine();
+		String gd = sc.nextLine();
+		
+		LocalDate at = LocalDate.parse(ad, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+		LocalDate gt = LocalDate.parse(gd, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+		
+		Period d = Period.between(gt,at);
+		// System.out.println(d.getYears());
+		System.out.println(d.getYears() + " years " + d.getMonths() + " months");
+		// System.out.println(LocalDate.parse(d,DateTimeFormatter.ofPattern("dd-MM-yyyy")));
+	}
+	
+	
+}

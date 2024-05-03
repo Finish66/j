@@ -1,0 +1,88 @@
+
+package q11273;
+class Animal {
+	public Animal() {
+		System.out.println("Animal is created");
+	}
+	void eat() {
+		System.out.println("Eating something");
+	}  
+}  
+class Dog extends Animal { 
+	public Dog() {
+		// super();
+		System.out.println("Dog is created");
+	}
+	void eat() {
+		System.out.println("Eating bread");
+	}
+	void bark() {
+		System.out.println("Barking");
+	}  
+	void work() {  
+		super.eat();
+		this.eat();
+		this.bark();
+	}  
+}  
+public class ExampleOnSuper { 
+	public static void main(String args[]) {
+		Dog d = new Dog();  
+		d.work();  
+	}
+} 
+Reason for late submission
+Eucs.Learner.Contents.LateSubmissionModal.Input.Placeholder
+Please enter at least 15 characters
+
+
+For example:
+class Person {
+}
+Person p = new Person();
+
+public static void main(String[] args) {
+	int x = Integer.parseInt(args[0]); // x is visible only inside this main method
+	if (x > 1) { //if-block-start
+		int y = 2 * x;  // y is visible only inside this if block
+		System.out.println("y = " + y);
+	} //if-block-end
+}
+Method and Constructor parameters. For example:
+public int sum(int num1, int num2) { //method-block-start
+	return num1 + num2; // num1 and num2 are only visible inside this method block	
+} //method-block-end
+Class - as instance fields
+class A { //class-block-start
+	private String name; //reference name is visible anywhere inside the class block
+	public String getName() {
+		return name; // example usage 1
+	}
+	public String toString() {
+		return "A [ name = " + name + " ]"; // example usage 2
+	}
+} //class-block-end
+interface Person {
+	public static final int RETIREMENT_AGE = 60;  // example of a constant 
+	void setName(String name);  // only method signature without method body
+	String getName();
+	void setAge(int age);
+	int getAge();
+}
+
+public class Teacher implements Person {
+	private String name;
+	private int age;
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
+	public int getAge() {
+		return age;
+	}
+}

@@ -1,0 +1,921 @@
+Unit 6
+package Main;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Deque;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+
+public class Collections {
+    public static void main(String[] args) {
+
+        // & Array Array List
+        List<String> ArrList = new ArrayList<>();
+        ArrList.get(0);
+        ArrList.contains("First");
+        ArrList.remove(3);
+        ArrList.set(0, "Steve Jobs");
+        ArrList.add(0, "Bill Gates");
+        // List ArrList = new ArrayList(args.length);
+
+        // & Hash Map
+        Map<String, String> Hashmp = new HashMap<>();
+        Hashmp.put("first", "second");
+        Hashmp.get("first");
+        Set<String> st2 = Hashmp.keySet();
+        boolean there = HashMap.containsKey(s);
+
+        // & Set / hash Set
+        Set<String> st = new HashSet<>();
+        st.add(null);
+
+        // & LinkedHased Set
+        Set<String> namesSet = new LinkedHashSet<>();
+        namesSet.add("Hello");
+        namesSet.remove("Hello");
+        namesSet.size();
+
+        // & ArrayDeye as queue
+        ArrayDeque<String> arrayDeque = new ArrayDeque<>();
+
+        // Use ArrayDeque as a queue
+        arrayDeque.offer("Ganga");
+        arrayDeque.offer("Yamuna");
+        arrayDeque.offer("Narmada");
+        arrayDeque.poll();
+
+        // Use ArrayDeque as a stack
+        arrayDeque.push("Krishna");
+        arrayDeque.push("Godavari");
+        arrayDeque.pop();
+
+        // Use ArrayDeque as a double-ended queue
+        arrayDeque.offerFirst("Indus");
+        arrayDeque.offerLast("Ravi");
+        arrayDeque.peekFirst();
+        arrayDeque.peekLast();
+        arrayDeque.pollFirst();
+        arrayDeque.pollFirst();
+    }
+}
+
+List<String> namesList = new ArrayList<String>();	//Statement 1
+namesList.add("Hyderabad");
+namesList.add("Bangalore");
+namesList.add("Chennai");
+for (String name : namesList) {				//Statement 2
+	System.out.println(name.substring(0, 3));	//Statement 3
+}
+
+// Hash map and set
+package q11392;
+import java.util.*;
+public class SimpleMapDemo {
+   public static void main(String[] args) {
+      Map<String, String> countryCodesMap = new HashMap<String, String>();
+      countryCodesMap.put("IN", "India");
+      countryCodesMap.put("CA", "Canada");
+      Set<String> codesSet = countryCodesMap.keySet();
+      for (String code : codesSet) {
+         String countryName = countryCodesMap.get(code);
+         System.out.println(code + " is the code for : " + countryName);
+      }
+   }
+}
+
+
+Declaration 
+ArrayList<Integer> numbersList = new ArrayList<Integer>();
+Accessing 
+Integer number1 = numbersList.get(0);
+Notation 
+List<Integer> numbersList = new ArrayList<Integer>();
+can also be written as
+List<Integer> numbersList = new ArrayList<>();
+
+
+
+// Example 
+public class BoundedTypeExample {
+	public static void main(String[] args) {
+		List<String> namesList = new ArrayList<>();
+		namesList.add("Ganga");
+		// add "Ganga" to the List.
+		namesList.add("Krishna");
+		// add "Krishna" to the List.
+		Set<String> namesSet = new LinkedHashSet<>();
+		namesSet.add("Ganga");
+		// add "Ganga" to the List.
+		namesSet.add("Narmada");
+		// add "Narmada" to the List.
+		System.out.println("largerCollection : " + largerCollection(namesList, namesSet));
+	}
+	public static <T extends Collection> T largerCollection(T collection1,T collection2){
+		return (collection1.size() > collection2.size())? collection1 : collection2;
+	}
+}
+
+public class ArrayListIterationDemo {
+	public static void main(String[] args) {
+		List namesList = new ArrayList();
+		for (String argument : args) {
+			if (Character.isUpperCase(argument.charAt(0))) {
+				namesList.add(argument);
+			}
+		}
+		for (Object name : namesList) {
+			System.out.println(name);
+		}
+		int n = namesList.size();
+		for(int i = 0; i < n ;i ++){
+			Object e = namesList.get(i);
+			System.out.println("Name at index " + i + " is : " + e);
+		}
+	}
+}
+
+
+// To check the uppercase of first letter
+public class ArrayListIterationDemo {
+	public static void main(String[] args) {
+		List namesList = new ArrayList();
+		for (String argument : args) {
+			if (Character.isUpperCase(argument.charAt(0))) {
+				namesList.add(argument);
+			}
+		}
+		for (Object name : namesList) {
+			System.out.println(name);
+		}
+		int n = namesList.size();
+		for(int i = 0; i < n ;i ++){
+			Object e = namesList.get(i);
+			System.out.println("Name at index " + i + " is : " + e);
+		}
+		
+	}
+}
+
+// Printing list 
+public class ArrayListIterationDemo {
+	public static void main(String[] args) {
+		List<String> namesList = new ArrayList<String>();
+		// write your code here
+		for(String s : args){
+			namesList.add(s);
+		}
+		System.out.println(namesList);
+		System.out.println("Size of the list is : " + namesList.size());
+	}
+}
+
+// Methods 
+public class ArrayListMethodsDemo {
+	public static void main(String[] args) {
+		List aList = new ArrayList(args.length);
+		for (String argument : args) {
+			aList.add(argument);
+		}
+		System.out.println("aList = " + aList);
+		System.out.println("aList.size() = " + aList.size());
+		System.out.println("removedElement = " + aList.get(3));
+		aList.remove(3);
+		System.out.println("aList = " + aList);
+		aList.set(0,"Steve Jobs");
+		System.out.println("aList = " + aList);
+		aList.add(0,"Bill Gates");
+		System.out.println("aList = " + aList);
+		
+	}
+}
+
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class InfiniteInputs {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        List<Integer> numbers = new ArrayList<>();
+        List<String> strings = new ArrayList<>();
+        
+        System.out.println("Enter negative integer to indicate the end of the input (Type any negative number):");
+        while (true) {
+            int num = scanner.nextInt();
+            if (num < 0)
+                break;
+            numbers.add(num);
+        }
+        
+        System.out.println("Enter non-alphabetic character to indicate the end of the input (Type any non-alphabetic character):");
+        while (true) {
+            String s = scanner.next();
+            if (!Character.isAlphabetic(s.charAt(0)))
+                break;
+            strings.add(s);
+        }
+        
+        System.out.println("Enter any non-numeric character to indicate the end of the input (Type any non-numeric character):");
+        while (true) {
+            String s = scanner.next();
+            if (!Character.isDigit(s.charAt(0)))
+                break;
+            numbers.add(Integer.parseInt(s));
+        }
+        
+        // Display the input lists
+        System.out.println("Numbers: " + numbers);
+        System.out.println("Strings: " + strings);
+        
+        // Close scanner
+        scanner.close();
+    }
+}
+
+
+public class TreeSetDemo {
+	public static void main(String[] args) {
+		Set namesSet = new TreeSet();
+		// Create a Scanner class object to read inputs
+		Scanner sc = new Scanner(System.in);
+		//Read string1 from user and add to the Set
+		String s1 = sc.nextLine();
+		namesSet.add(s1);
+		//Read string 2 from user and add to the Set
+		String s2 = sc.nextLine();
+		namesSet.add(s2);
+		
+		//add "Budha" to the Set
+		namesSet.add("Budha");
+		//Print the TreeSet
+		System.out.println("namesSet = " + namesSet);
+		//again add "Budha" to the Set
+		
+		//Print the TreeSet
+		namesSet.add("Budha");
+		//Print the TreeSet
+		System.out.println("namesSet = " + namesSet);
+		
+		//remove string 2 from the Set
+		namesSet.remove(s2);
+		//Print the TreeSet
+		System.out.println("namesSet = " + namesSet);
+		
+	}
+}
+
+
+// Shortcuts for adding 
+public class TreeSetDemo {
+	public static void main(String[] args) {
+		Set<String> namesSet = new TreeSet<String>();
+		Scanner sc = new Scanner(System.in);
+		namesSet.add(sc.nextLine());
+		namesSet.add(sc.nextLine());
+		namesSet.add(sc.nextLine());
+		System.out.println("namesSet = " + namesSet);
+		namesSet.add(sc.nextLine());
+		System.out.println("namesSet = " + namesSet);
+		namesSet.remove(sc.nextLine());
+		namesSet.remove(sc.nextLine());
+		System.out.println("namesSet = " + namesSet);
+	}
+}
+
+import java.util.Scanner;
+import java.util.Set;
+import java.util.TreeSet;
+
+public class CompareSets {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        TreeSet<Integer> firstSet = new TreeSet<>();
+        TreeSet<Integer> st = new TreeSet<>();
+        
+        boolean isContained = st.containsAll(firstSet);
+        
+        String str1 = scanner.nextLine();
+        String str2 = scanner.nextLine();
+        
+        Set<Character> s1 = new TreeSet<>();
+        Set<Character> s2 = new TreeSet<>();
+        
+        for (char c : str1.toCharArray()) {
+            s1.add(c);
+        }
+        
+        for (char c : str2.toCharArray()) {
+            s2.add(c);
+        }
+        
+        scanner.close();
+    }
+}
+
+
+
+
+import java.util.Scanner;
+import java.util.HashMap;
+
+public class HashMapDemo {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        HashMap<String, String> aMap = new HashMap<>();
+        System.out.println("aMap.size() = " + aMap.size());
+        System.out.println("aMap = " + aMap);
+
+        aMap.put(sc.nextLine(), sc.nextLine());
+        aMap.put(sc.nextLine(), sc.nextLine());
+        aMap.put(sc.nextLine(), sc.nextLine());
+        aMap.put(sc.nextLine(), sc.nextLine());
+
+        System.out.println("aMap.size() = " + aMap.size());
+        System.out.println("aMap = " + aMap);
+
+        HashMap<String, String> bMap = new HashMap<>(aMap);
+        System.out.println("bMap.size() = " + bMap.size());
+        System.out.println("bMap = " + bMap);
+
+        HashMap<String, String> cMap = new HashMap<>(20);
+        System.out.println("cMap.size() = " + cMap.size());
+        System.out.println("cMap = " + cMap);
+    }
+}
+
+
+public class CharcountDemo {
+   public static void main(String[] args) {
+      HashMap <Character, Integer> namesMap = new HashMap<Character, Integer>();
+      // write your code here 
+      Scanner sc = new Scanner(System.in);
+      String s = sc.nextLine();
+	   for(char c : s.toCharArray()){
+		   if (namesMap.containsKey(c)){
+			   namesMap.put(c, namesMap.get(c) + 1);
+		   } else {
+			   namesMap.put(c, 1);
+		   }
+	   }
+      System.out.println(namesMap);
+   }
+}
+
+
+public class HashMapIterationDemo {
+	public static void main(String[] args) {
+		Map namesMap = new HashMap();
+		for (String argument : args) {
+			String shortName = argument.substring(0, 3);
+			namesMap.put(shortName, argument);
+		}
+		
+		Set<String> st = namesMap.keySet();
+
+		for(String key : st){
+			System.out.println(key + " : " + namesMap.get(key));
+		}
+	}
+}
+
+import java.util.ArrayDeque;
+
+public class QueueDequeDemo {
+    public static void main(String[] args) {
+        // Create an empty ArrayDeque named arrayDeque
+        ArrayDeque<String> arrayDeque = new ArrayDeque<>();
+
+        // Use ArrayDeque as a queue
+        arrayDeque.offer("Ganga");
+        arrayDeque.offer("Yamuna");
+        arrayDeque.offer("Narmada");
+        System.out.println("After all offer calls: " + arrayDeque);
+        System.out.println("poll returns: " + arrayDeque.poll());
+        System.out.println("After calling poll: " + arrayDeque);
+
+        // Use ArrayDeque as a stack
+        arrayDeque.push("Krishna");
+        arrayDeque.push("Godavari");
+        System.out.println("After all push calls: " + arrayDeque);
+        System.out.println("pop returns: " + arrayDeque.pop());
+        System.out.println("After calling pop: " + arrayDeque);
+
+        // Use ArrayDeque as a double-ended queue
+        arrayDeque.offerFirst("Indus");
+        arrayDeque.offerLast("Ravi");
+        System.out.println("arrayDeque after offerFirst and offerLast calls: " + arrayDeque);
+    }
+}
+
+
+
+public class GFG {
+
+	public static void main(String args[])
+	{
+		String str = "word1, word2 word3@word4?word5.word6";
+		String[] arrOfStr = str.split("[, ?.@]+");
+
+		for (String a : arrOfStr)
+			System.out.println(a);
+	}
+}
+
+
+import java.util.*;
+
+public class ArrayListDemo {
+    public static void main(String[] args) {
+        List aList = new ArrayList();
+        System.out.println("aList.size() = " + aList.size());
+        System.out.println("aList = " + aList);
+
+        aList.add("First Entry");
+        aList.add("Second Entry");
+
+        System.out.println("aList.size() = " + aList.size());
+        System.out.println("aList = " + aList);
+
+        List bList = new ArrayList(aList);
+        System.out.println("bList.size() = " + bList.size());
+        System.out.println("bList = " + bList);
+
+        List cList = new ArrayList(20);
+        System.out.println("cList.size() = " + cList.size());
+        System.out.println("cList = " + cList);
+    }
+}
+
+package q35988;
+import java.util.*;
+
+public class ArrayListIterationDemo {
+	public static void main(String[] args) {
+		List namesList = new ArrayList();
+		for (String argument : args) {
+			if (Character.isUpperCase(argument.charAt(0))) {
+				namesList.add(argument);
+			}
+		}
+		for (Object name : namesList) {
+			System.out.println(name);
+		}
+		int n = namesList.size();
+		for(int i = 0; i < n ;i ++){
+			Object e = namesList.get(i);
+			System.out.println("Name at index " + i + " is : " + e);
+		}
+		
+	}
+}
+
+import java.util.*;
+public class ArrayListIterationDemo {
+	public static void main(String[] args) {
+		List<String> namesList = new ArrayList<String>();
+		for (String s : args) { 
+			if (Character.isUpperCase(s.charAt(0))) {
+				// add arguments to the namesList
+				namesList.add(s);
+			}
+		}
+		for (Object name : namesList) {
+			System.out.println(name);// print elements in the namesList
+			
+		}
+	
+	}
+}
+
+
+
+package q23673;
+import java.util.*;
+public class ArrayListIterationDemo {
+	public static void main(String[] args) {
+		
+		List ls = new ArrayList();
+
+		for(Object s : args){
+			ls.add(s);
+		}
+		int n = ls.size();
+		for(int i = 0 ;i < n;i++){
+			System.out.println("Name at index " + i + " is : " + ls.get(i));
+		}
+	}
+}
+
+
+
+package q24085;
+import java.util.*;
+public class ArrayListIterationDemo {
+	public static void main(String[] args) {
+		List<String> namesList = new ArrayList<String>();
+		// write your code here
+		for(String s : args){
+			namesList.add(s);
+		}
+		System.out.println(namesList);
+		System.out.println("Size of the list is : " + namesList.size());
+
+
+	}
+}
+
+
+public class ArrayListMethodsDemo {
+    public static void main(String[] args) {
+        List aList = new ArrayList(args.length);
+        for (String argument : args) {
+            aList.add(argument);
+        }
+
+        System.out.println("aList = " + aList);
+        System.out.println("aList.size() = " + aList.size());
+        System.out.println("removedElement = " + aList.get(3));
+        aList.remove(3);
+        System.out.println("aList = " + aList);
+        aList.set(0,"Steve Jobs");
+        System.out.println("aList = " + aList);
+        aList.add(0,"Bill Gates");
+        System.out.println("aList = " + aList);
+    }
+}
+
+
+import java.util.*;
+
+public class TreeSetDemo {
+    public static void main(String[] args) {
+        Set namesSet = new TreeSet();
+        Scanner sc = new Scanner(System.in);
+
+        String s1 = sc.nextLine();
+        namesSet.add(s1);
+
+        String s2 = sc.nextLine();
+        namesSet.add(s2);
+
+        namesSet.add("Budha");
+        System.out.println("namesSet = " + namesSet);
+
+        namesSet.add("Budha");
+        System.out.println("namesSet = " + namesSet);
+
+        namesSet.remove(s2);
+        System.out.println("namesSet = " + namesSet);
+    }
+}
+
+
+package q37263;
+import java.util.*;
+public class TreeSetDemo {
+	public static void main(String[] args) {
+		Set<String> namesSet = new TreeSet<String>();
+		Scanner sc = new Scanner(System.in);
+		namesSet.add(sc.nextLine());
+		namesSet.add(sc.nextLine());
+		namesSet.add(sc.nextLine());
+		System.out.println("namesSet = " + namesSet);
+		namesSet.add(sc.nextLine());
+		System.out.println("namesSet = " + namesSet);
+		
+		namesSet.remove(sc.nextLine());
+		namesSet.remove(sc.nextLine());
+
+		System.out.println("namesSet = " + namesSet);
+	}
+}
+
+
+package q37264;
+import java.util.*;
+public class HashMapDemo {
+	public static void main(String[] args) {
+		// create Scanner object to read inputs
+		Scanner sc = new Scanner(System.in);
+		
+		// Create a new HashMap object called "aMap" without specifying its initial capacity.
+		HashMap<String, String> aMap = new HashMap<>();
+		// print aMap size.
+		System.out.println("aMap.size() = " + aMap.size());
+		// print aMap
+		System.out.println("aMap = " + aMap);
+		
+		// read two strings representing first key and value and add it to
+		aMap.put(sc.nextLine(),sc.nextLine());
+		aMap.put(sc.nextLine(),sc.nextLine());
+		aMap.put(sc.nextLine(),sc.nextLine());
+		aMap.put(sc.nextLine(),sc.nextLine());
+		
+		// read two strings representing second key and value
+		
+		
+		// read two strings representing third key and value
+		
+		
+		// read two strings representing fourth key and value
+		
+		
+		// aMap.put(key1, value1);
+		// aMap.put(key2, value2);
+		// aMap.put(key3, value3);
+		// aMap.put(key4, value4);
+		
+		// print size of aMap 
+		System.out.println("aMap.size() = " + aMap.size());
+		// print aMap
+		System.out.println("aMap = " + aMap);
+		
+		//Create a new HashMap object called "bMap" and initialize it with the contents of aMap using the constructor.
+		HashMap <String, String> bMap = new HashMap(aMap);
+		// print size of bMap and bMap
+		System.out.println("bMap.size() = " + bMap.size());
+		System.out.println("bMap = " + bMap);
+		
+		// Create a new HashMap object called "cMap" and initialize it withwith an initial capacity of 20.
+		HashMap <String, String> cMap = new HashMap(20);
+		System.out.println("cMap.size() = " + cMap.size());
+		System.out.println("cMap = " + cMap);
+		
+		
+		// print size of cMap and cMap
+
+
+	}
+}
+
+package q37268;
+import java.util.*;
+public class HashMapGetMethodDemo {
+	public static void main(String[] args) {
+		Map <String, String> namesMap = new HashMap <String, String>();
+		// Scanner input=new Scanner(System.in);
+		namesMap.put("Sun", "Sunday");
+		namesMap.put("Mon", "Monday");
+		namesMap.put("Tue", "Tuesday");
+		namesMap.put("Thu", "Thursday");
+		System.out.println("namesMap = " + namesMap);
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter key to get value: ");
+		String key = sc.next();
+		System.out.println("value mapped to " + "Tue" + " is : " + namesMap.get(key));
+	}
+}
+
+
+package q37269;
+import java.util.*;
+public class CharcountDemo {
+   public static void main(String[] args) {
+      HashMap <Character, Integer> namesMap = new HashMap<Character, Integer>();
+      // write your code here 
+      Scanner sc = new Scanner(System.in);
+      String s = sc.nextLine();
+	   for(char c : s.toCharArray()){
+		   if (namesMap.containsKey(c)){
+			   namesMap.put(c, namesMap.get(c) + 1);
+		   } else {
+			   namesMap.put(c, 1);
+		   }
+	   }
+      System.out.println(namesMap);
+   }
+}
+
+
+package q36018;
+import java.util.*;
+public class HashMapIterationDemo {
+	public static void main(String[] args) {
+		Map namesMap = new HashMap();
+		for (String argument : args) {
+			String shortName = argument.substring(0, 3);
+			namesMap.put(shortName, argument);
+		}
+		
+	
+		/*1.create a new Set called shortNamesSet and 
+		assigns it the set of keys from the namesMap 
+		map.
+		
+		2.write a loop that iterates over each element in the 
+		shortNamesSet set. For each iteration, the current
+		element is assigned to the variable key.
+		
+		3.create a Object variable value inside the loop
+		tht value gets the current key from the	namesMap map.
+		
+		4. print the key and value as key : value */
+
+		Set<String> st = namesMap.keySet();
+
+		for(String key : st){
+			System.out.println(key + " : " + namesMap.get(key));
+		}
+		
+		
+
+	}
+}
+
+
+import java.util.*;
+
+public class ArrayDequeDemo {
+    public static void main(String[] args) {
+        ArrayDeque<String> arrayDeque = new ArrayDeque<>();
+        Scanner sc = new Scanner(System.in);
+
+        arrayDeque.offer(sc.nextLine());
+        arrayDeque.offer(sc.nextLine());
+        arrayDeque.offer(sc.nextLine());
+
+        System.out.println("after all offers calls : " + arrayDeque);
+        Object obj = arrayDeque.poll();
+        System.out.println("poll returns : " + obj);
+        System.out.println("after calling poll : " + arrayDeque);
+
+        arrayDeque.push(sc.nextLine());
+        arrayDeque.push(sc.nextLine());
+
+        System.out.println("after all push calls : " + arrayDeque);
+        obj = arrayDeque.pop();
+        System.out.println("pop returns : " + obj);
+        System.out.println("after calling pop : " + arrayDeque);
+
+        arrayDeque.offerFirst(sc.nextLine());
+        arrayDeque.offerLast(sc.nextLine());
+
+        System.out.println("arrayDeque after offerFirst and offerLast calls : " + arrayDeque);
+    }
+}
+
+
+
+package q29348;
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.TreeSet;
+
+public class LongestWordFinder {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String sentence = scanner.nextLine();
+        String[] words = sentence.split("\\s+");
+        TreeSet<String> wordSet = new TreeSet<>(String.CASE_INSENSITIVE_ORDER);
+
+		// write the code..
+		for(String word : words){
+			wordSet.add(word);
+		}
+		int mx = Integer.MIN_VALUE;
+		for(String w : wordSet){
+			mx = Math.max(mx, w.length());
+		}
+
+		for(String s : wordSet){
+			if(s.length() == mx){
+				System.out.println(s);
+			}
+		}
+
+    }
+}
+
+package q30035;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
+
+public class SecondLargest {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<Integer> list = new ArrayList<>();
+ 
+		// write the code..
+		while(scanner.hasNextInt()){
+			list.add(scanner.nextInt());
+		}
+		if(list.size() < 2){
+			System.out.println("Insufficient elements");
+		} else {
+			Collections.sort(list);
+			System.out.println(list.get(list.size() - 2));
+		}
+		
+    }
+}
+
+
+public class SlidingWindowProduct {
+    public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		String[] in = sc.nextLine().split(" ");
+		int[] arr = new int[in.length];
+		for(int i = 0 ; i < in.length ;i++){
+			arr[i] = Integer.parseInt(in[i]);
+		}
+		int k = sc.nextInt();
+		printSlidingWindowProducts(arr, k);
+
+    }
+    public static void printSlidingWindowProducts(int[] array, int windowSize) {
+        Deque<Integer> deque = new ArrayDeque<>();
+		int k = windowSize;
+		int p = 1;
+		for(int i = 0 ; i < k; i++){
+			deque.offer(array[i]);
+			p *= array[i];
+		}
+		System.out.println(p);
+		for(int i = k; i < array.length; i++){
+			p /= deque.poll();
+			deque.offer(array[i]);
+			p*= array[i];
+			System.out.println(p);
+		}
+		
+
+
+    }
+}
+import java.util.*;
+
+public class EmployeeDatabase {
+    public static Map<String, String> mp = new HashMap<>();
+    public static Scanner scanner = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        boolean running = true;
+        while (running) {
+            System.out.println("1. Add Employee");
+            System.out.println("2. Delete Employee");
+            System.out.println("3. Search Employee by Name");
+            System.out.println("4. Exit");
+
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // Consume newline
+
+            switch (choice) {
+                case 1:
+                    addEmployee();
+                    break;
+                case 2:
+                    deleteEmployee();
+                    break;
+                case 3:
+                    searchEmployee();
+                    break;
+                case 4:
+                    running = false;
+                    break;
+                default:
+                    System.out.println("Invalid choice");
+            }
+        }
+    }
+
+    private static void addEmployee() {
+        System.out.print("Employee name: ");
+        String n = scanner.nextLine();
+        System.out.print("Department: ");
+        String d = scanner.nextLine();
+        mp.put(n, d);
+        System.out.println("Employee added");
+    }
+
+    private static void deleteEmployee() {
+        System.out.print("Employee name to delete: ");
+        String a = scanner.nextLine();
+        if (!mp.containsKey(a)) {
+            System.out.println("Employee not found");
+        } else {
+            mp.remove(a);
+            System.out.println("Employee deleted");
+        }
+    }
+
+    private static void searchEmployee() {
+        System.out.print("Employee name to search: ");
+        String a = scanner.nextLine();
+        if (!mp.containsKey(a)) {
+            System.out.println("Employee not found");
+        } else {
+            System.out.println("Department: " + mp.get(a));
+        }
+    }
+}

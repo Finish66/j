@@ -1,0 +1,888 @@
+
+//File Name: q28344/OverFlow.java
+//==================================
+package q28344;
+import java.util.*;
+//write your code here..
+
+class OverflowException extends Exception{
+	public OverflowException(String m){
+		super(m);
+	}
+}
+
+class Calculator{
+	public static int multiply(int a,int b) throws OverflowException{
+		long ans = 	(long) a*b;
+		if(ans>Integer.MAX_VALUE){
+			throw new OverflowException("Result exceeds the maximum value");
+		}
+		return (int)ans;
+	}
+}
+
+public class OverFlow {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        try {
+            System.out.print("");
+            int num1 = scanner.nextInt();
+
+            System.out.print("");
+            int num2 = scanner.nextInt();
+
+            int result = Calculator.multiply(num1, num2);
+            System.out.println("Multiplication: " + result);
+        } catch (OverflowException e) {
+            System.out.println("Error: " + e.getMessage());
+        } finally {
+            scanner.close();
+        }
+    }
+}
+
+
+
+//File Name: q28345/Arrays.java
+//==================================
+package q28345;
+import java.util.Scanner;
+//write your code here..
+class NotFoundException extends Exception{
+	public NotFoundException (String message){
+		super(message);
+	}
+}
+class ArraySearcher{
+	public static int search(int[]arr,int t) throws NotFoundException{
+		for(int i= 0 ;i<arr.length;i++){
+			if(arr[i]==t)
+				return i;
+		}
+		throw new NotFoundException("Element not found");
+	}
+}
+
+public class Arrays {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Size: ");
+        int size = scanner.nextInt();
+        int[] arr = new int[size];
+
+        System.out.println("Elements:");
+        for (int i = 0; i < size; i++) {
+            arr[i] = scanner.nextInt();
+        }
+        System.out.print("Element to search: ");
+        int target = scanner.nextInt();
+
+        try {
+            int index = ArraySearcher.search(arr, target);
+            System.out.println("Element found at index: " + index);
+        } catch (NotFoundException e) {
+            System.out.println("Error: " + e.getMessage());
+        } finally {
+            scanner.close();
+        }
+    }
+}
+
+//File Name: q28360/Date.java
+//==================================
+package q28360;
+import java.util.Scanner;
+import java.util.regex.Pattern;
+
+class InvalidTimeFormatException extends Exception{
+	public InvalidTimeFormatException(String message){
+		super(message);
+	}
+}
+
+class TimeValidator{
+	public static void validateTime(String d) throws InvalidTimeFormatException{
+		String pattern = "^([01]?[0-9]|2[0-3]):([0-5]?[0-9]):([0-5]?[0-9])$";
+		
+		if(!Pattern.matches(pattern,d )){
+			throw new InvalidTimeFormatException("Invalid time format");
+		}
+			System.out.println("Time is valid");
+	}
+}
+
+
+public class Date {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        try {
+            System.out.print("Time (HH:MM:SS): ");
+            String time = scanner.nextLine();
+
+            TimeValidator.validateTime(time);
+        } catch (InvalidTimeFormatException e) {
+            System.out.println("Error: " + e.getMessage());
+        } finally {
+            scanner.close();
+        }
+    }
+}
+
+
+
+//File Name: q28307/SquareRootCalculator.java
+//==================================
+package q28307;
+import java.util.Scanner;
+public class SquareRootCalculator {
+    public static void main(String[] args) {
+
+	// write the code..
+		Scanner sc = new Scanner (System.in);
+		String s = sc.nextLine();
+        try {
+        	int n = Integer.parseInt(s);
+        	double ans = Math.sqrt(n);
+        	// System.out.printf("%.2f\n",ans);
+        	if(Double.isNaN(ans))
+        		System.out.println("Error: Square root of a negative number is not possible");
+        	else 
+        		System.out.printf("%.2f\n",ans);
+        } 
+        
+        catch ( NumberFormatException e ) {
+        	System.out.println("Error: Invalid input");
+        } 
+        
+        // catch ( ArithmeticException e  ) {
+        	
+        //     System.out.println("Error: Square root of a negative number is not possible");
+        // }
+        
+    }
+}
+
+
+//File Name: q28312/QuizApplication.java
+//==================================
+package q28312;
+import java.util.Scanner;
+public class QuizApplication {
+		
+		// write the code..
+	public static void main(String[]args){
+		Scanner sc = new Scanner(System.in);
+		String s = sc.nextLine();
+		try {
+            int n = Integer.parseInt(s);
+            System.out.println("Quiz score: "+n);
+        } catch ( NumberFormatException e     ) {
+            
+            System.out.println("Error: Invalid input");
+        }
+	}
+}
+
+//File Name: q28310/ReservationSystem.java
+//==================================
+package q28310;
+import java.util.Scanner;
+public class ReservationSystem {
+   
+   // write the code..
+	public static void main(String[]args){
+		Scanner sc= new Scanner (System.in);
+		String s = sc.nextLine();
+        try {
+            int n = Integer.parseInt(s);
+            if(n>0){
+            	System.out.println(n);
+            }
+            else {
+            	System.out.println("Error: Number of seats must be greater than 0");
+            }
+           
+        } catch ( NumberFormatException e   ) {
+            System.out.println("Error: Input must be a valid integer");
+        }
+	}
+}
+
+
+//File Name: q28313/EventDurationConverter.java
+//==================================
+package q28313;
+import java.util.Scanner;
+public class EventDurationConverter {
+  
+		// write the code...
+	public static void main(String []args){
+		Scanner sc = new Scanner(System.in);	
+        try {
+            int h = Integer.parseInt(sc.nextLine());
+            if(h<0){
+	            System.out.println("Error: Input must be a non-negative integer");
+	            return;
+            }
+            int m = Integer.parseInt(sc.nextLine());
+            if(h<0 || m<0)
+            	System.out.println("Error: Input must be a non-negative integer");
+            else
+	        	System.out.println(h*60+m);
+        } catch ( NumberFormatException e     ) {
+            
+    		System.out.println("Error: Input must be a valid integer");       
+        }
+        // } catch (     ) {
+            
+        // }
+	}
+}
+
+//File Name: q28314/VacationDuration.java
+//==================================
+package q28314;
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
+import java.util.Scanner;
+
+public class VacationDuration {
+
+	// write the code...
+	public static void main(String[] args){
+		Scanner sc = new Scanner(System.in);
+		String s1 = sc.nextLine();
+		String s2 = sc.nextLine();
+        try {
+           LocalDate start = LocalDate.parse(s1);
+           LocalDate end = LocalDate.parse(s2);
+           
+           if(start.isAfter(end)){
+           		System.out.println("Error: Start date cannot be after end date");
+           } else {
+	           	long day = 0;
+	           	while(!start.isAfter(end)){
+	           		start = start.plusDays(1);
+	           		day++;
+           		}
+	           	System.out.println(day-1);
+           }
+        } catch (  DateTimeParseException e    ) {
+            System.out.println("Error: Invalid date format");
+        }
+	}
+}
+
+//File Name: q28288/WordSearch.java
+//==================================
+package q28288;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class WordSearch {
+
+public static void main(String []args){
+	Scanner sc = new Scanner (System.in);
+	
+	String filename = sc.nextLine();
+	String word = sc.nextLine();
+	
+	try{
+		BufferedReader reader = new BufferedReader(new FileReader(filename));
+		String line;
+		int index = -1;
+		int linenum = 0;
+		while((line = reader.readLine()) != null){
+			linenum++;
+			index = line.indexOf(word);
+			if(index != -1){
+				break;
+			}
+		}
+		
+		if(index !=-1){
+			System.out.println("Word starts at index: "+ index);
+		} else {
+			System.out.println("Word not found");
+		}
+	} catch (IOException e){
+		System.out.println("File not found");
+	}
+}
+}
+
+//File Name: file1.txt
+//==================================
+This is the content of file 1.
+It contains some text.
+
+//File Name: file2.txt
+//==================================
+Hello
+World
+This
+Is
+A
+Test
+File
+
+
+
+//File Name: q28282/AppendToFile.java
+//==================================
+package q28282;
+import java.io.*;
+
+import java.util.*;
+import java.io.*;
+public class LongestWord {
+    public static void main(String[] args) {
+        try{
+
+            Scanner sc = new Scanner(System.in);
+            String filename = sc.nextLine();
+            String longestWord = findLongestWord(filename);
+            System.out.println("Longest word in "+filename+" is "+longestWord);
+        }catch(IOException e){
+            System.out.println("Error: "+e.getMessage());
+        }
+
+    }
+    private static String findLongestWord(String filename) throws IOException{
+        File file = new File(filename);
+        Scanner sc = new Scanner(file);
+        String longestWord = "";
+        while(sc.hasNext()){
+            String word = sc.next();
+            // word = word.replaceAll("[^  A-Za-z]","");
+            if(word.length() > longestWord.length()){
+                longestWord = word;
+            }
+        }
+        return longestWord;
+    }
+}
+
+// public class AppendToFile {
+import java.util.*;
+
+public class AppendToFile{
+	
+	public static void main(String[]args){
+		Scanner sc = new Scanner(System.in);
+		
+		try{
+			String filename = sc.nextLine();
+			File file = new File(filename);
+			if(!file.exists()){
+				System.out.println("File does not exist");
+				return;
+			}
+			BufferedWriter bw = new BufferedWriter(new FileWriter(filename,true));
+			String text = sc.nextLine();
+			bw.newLine();
+			bw.write(text);
+			// bw.newLine();
+			bw.close();
+			BufferedReader br = new BufferedReader(new FileReader(filename));
+			String line;
+			while((line = br.readLine())!=null){
+				System.out.println(line);
+			}
+			
+		} catch (IOException e){
+			System.out.println("File does not exist");
+		}
+	}
+
+}
+
+//File Name: file1.txt
+//==================================
+This is the content of file 1.
+
+//File Name: file2.txt
+//==================================
+This is the content of file 2.
+
+//File Name: file3.txt
+//==================================
+Hi, Hello world!
+
+//File Name: file4.txt
+//==================================
+When a fire breaks out, time is of the essence.
+
+
+
+//File Name: q28244/AbstractChecker.java
+//==================================
+package q28244;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class AbstractChecker {
+
+	public static void main(String []main){
+		Scanner sc = new Scanner (System.in);
+		String filename = sc.nextLine();
+		File file = new File(filename);
+		if(!file.exists()){
+			System.out.println("File does not exist");
+			return;
+		}
+		
+		try{
+			BufferedReader br = new BufferedReader(new FileReader(filename));
+			StringBuilder abs =  new StringBuilder();
+			
+			String line;
+			while((line = br.readLine())!=null){
+				abs.append(line);
+			}
+			
+			int charC = abs.toString().length();
+			
+			if(charC<=250)
+				System.out.println("Eligible");
+			else 
+				System.out.println("Not eligible");
+			System.out.println("Character count: "+ charC);
+		} catch(Exception e){
+			System.out.println(e);
+		}
+	}
+
+}
+
+//File Name: file1.txt
+//==================================
+This paper explores a relatively less popular source of clean energy. 
+ An application is proposed for the same, in which a speaker and a transformer 
+are used to convert noise produced by car horn into electrical energy
+
+//File Name: file2.txt
+//==================================
+Inverters are widely used in the domestic as well as industrial environments to serve
+as second line of source in case of power cut form the electricity utility grids. 
+Inverter is the device that powers the electric appliances in the event of the power 
+failure. Inverter as the name implies first converts AC to DC for 
+charging the battery and then inverts DC to AC for powering the electric gadgets.
+
+//File Name: file3.txt
+//==================================
+This paper explores a relatively less popular source of clean energy. 
+ An application is proposed for the same, in which a speaker and a transformer 
+are used to convert noise produced by car horn into electrical energyThis paper explores a relatively less popular source of clean energy. 
+ An application is proposed for the same, in which a speaker and a transformer 
+are used to convert noise produced by car horn into electrical energy
+
+//File Name: file4.txt
+//==================================
+Insert text here   1 2 3 3 3 3 3 3 3 3 3
+
+//File Name: q28294/RemoveLineFromFile.java
+//==================================
+package q28294;
+import java.io.*;
+
+// public class RemoveLineFromFile {
+import java.util.*;
+
+public class RemoveLineFromFile{
+	public static void main(String[]args){
+		Scanner sc = new Scanner(System.in);
+		String filename= sc.nextLine();
+		int n = sc.nextInt();
+		sc.nextLine();
+		try{
+			BufferedReader reader = new BufferedReader(new FileReader(filename));
+			String line;
+			StringBuilder sb = new StringBuilder();
+			
+			int curr = 1;
+			while((line = reader.readLine())!=null){
+				if(curr !=n)
+					sb.append(line).append("\n");
+				curr++;
+			}
+			if(n>curr || n<1){
+				System.out.println("Line not found");
+				return;
+			}
+			
+			try(BufferedWriter writer = new BufferedWriter(new FileWriter(filename))){
+				writer.write(sb.toString());
+				System.out.println(sb.toString());
+			}
+		} catch(Exception e){
+			System.out.println("File not found");
+		}
+		
+	}
+
+}
+
+//File Name: file1.txt
+//==================================
+This is line 1.
+This is line 2.
+This is line 3.
+This is line 4.
+This is line 5.
+
+//File Name: file2.txt
+//==================================
+Line 1: This is the first line.
+Line 2: This is the second line.
+Line 3: This is the third line.
+Line 4: This is the fourth line.
+Line 5: This is the fifth line.
+
+//File Name: q28365/RemoveWordFromFile.java
+//==================================
+package q28365;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class RemoveWordFromFile {
+
+	public static void main(String[]args){
+		Scanner sc = new Scanner(System.in);
+		String text = sc.nextLine();
+		String filename = sc.nextLine();
+		
+		File file = new File(filename);
+		// if(!file.exists()){
+		// 	System.out.println("File not found");
+		// }
+		try{
+			StringBuilder cont = new StringBuilder();
+			BufferedReader br = new BufferedReader(new FileReader(filename));
+			String line;
+			while((line = br.readLine())!= null){
+				cont.append(line).append("\n");
+			}
+			
+			String modified = cont.toString().replaceAll("\\b"+text+"\\b","");
+			
+			if(modified.equals(cont.toString())){
+				System.out.println("Word not found");
+				return;
+			}
+			
+			try (BufferedWriter bw = new BufferedWriter(new FileWriter(filename))){
+				bw.write(modified);
+				System.out.println(modified);
+			}
+			
+		} catch (Exception e){
+			System.out.println("File not found");
+		}
+	}
+
+}
+
+//File Name: file1.txt
+//==================================
+Mary had a little lamb, little lamb, little lamb. Mary had a little lamb, 
+its fleece was white as snow.
+
+//File Name: file2.txt
+//==================================
+This is a sample file.
+It contains some words that we can remove.
+Sample word: example
+We will remove this word from the file.
+
+//File Name: q28361/LongestWordFinder.java
+//==================================
+package q28361;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class LongestWordFinder {
+
+	public static void main(String[]args){
+		Scanner sc = new Scanner (System.in);
+		
+		String filename = sc.nextLine();
+		
+		try{
+			String lon = "";
+			BufferedReader br = new BufferedReader(new FileReader(filename));
+			String line;
+			while((line = br.readLine())!=null){
+				String []words = line.split("\\s+");
+				for(String w:words){
+					if(w.length()>lon.length()){
+						lon = w;
+					}
+				}
+			}
+			System.out.println(lon);
+		}catch(Exception e){
+			System.out.println("File not found");
+		}
+	}
+
+}
+
+//File Name: file1.txt
+//==================================
+The quick brown fox jumps over the lazy dog.
+
+//File Name: file2.txt
+//==================================
+Alice was beginning to get very tired of sitting by her sister on the bank, and of having nothing to do once or twice she had peeped into the book her sister was reading, but it had no pictures or conversations
+
+//File Name: q28433/RemoveSpecialCharacters.java
+//==================================
+package q28433;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class RemoveSpecialCharacters {
+
+	public static void main(String []args){
+		Scanner sc = new Scanner(System.in);
+		
+		String filename = sc.nextLine();
+		
+		try{
+			BufferedReader reader = new BufferedReader(new FileReader(filename));
+			String line;
+			StringBuilder sb = new StringBuilder();
+			
+			while((line=reader.readLine())!= null){
+				String cl = line.replaceAll("[^a-zA-Z0-9\\s]","");
+				sb.append(cl).append("\n");
+			}
+			System.out.println(sb.toString());
+		}catch(Exception e){
+			System.out.println("File does not exist");
+		}
+	}
+}
+
+//File Name: file1.txt
+//==================================
+This is a sample text file.
+It contains special characters like !@#$%^&*()_+-={}[]|\:;"'<>,./?
+
+//File Name: file2.txt
+//==================================
+This file does not contain any special characters.
+
+//File Name: q28370/MaxSubarrayProduct.java
+//==================================
+package q28370;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class MaxSubarrayProduct {
+
+	public static void main(String[]main){
+		Scanner sc = new Scanner(System.in);
+		String filename = sc.nextLine();
+		
+		try{
+			
+			BufferedReader br = new BufferedReader(new FileReader(filename));
+			String line = br.readLine();
+			String []nums = line.split(" ");
+			int [] arr = new int[nums.length];
+			
+			for(int i= 0;i<nums.length;i++){
+				arr[i] = Integer.parseInt(nums[i]);
+			}
+			
+			int maxProd = findMax(arr);
+			System.out.println(maxProd);
+			
+		}catch(Exception e){
+			System.out.println("File not found");
+		}
+		
+	}
+	
+	public static int findMax(int[]arr){
+		int maxEnd = arr[0];
+		int minEnd = arr[0];
+		int maxProd = arr[0];
+		
+		for(int i = 1;i<arr.length;i++){
+			int temp = maxEnd;
+			
+			maxEnd = Math.max(Math.max(arr[i],arr[i]*maxEnd),arr[i]*minEnd);
+			minEnd = Math.min(Math.min(arr[i],arr[i]*temp),arr[i]*minEnd );
+			maxProd = Math.max(maxProd,maxEnd);
+		}
+		return maxProd;
+	}
+
+}
+
+//File Name: file1.txt
+//==================================
+2 -3 5 -2 -4 3 -2
+
+//File Name: file2.txt
+//==================================
+-1 2 -3 4 -5 6 -7
+
+//File Name: file3.txt
+//==================================
+1 2 3 4 5 6 7 8 9 10
+
+//File Name: q28367/WordSorter.java
+//==================================
+package q28367;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
+
+// public class WordSorter {
+
+import java.util.*;
+public class WordSorter{
+	public static void main(String[]args){
+		Scanner sc = new Scanner(System.in);
+		
+		String filename = sc.nextLine();
+		try{
+			BufferedReader br = new BufferedReader(new FileReader(filename));
+			StringBuilder sb = new StringBuilder();
+			String line;
+			while((line = br.readLine())!=null){
+				sb.append(line);
+				sb.append(" ");
+			}
+			
+			String cont = sb.toString();
+			String[] w = cont.split(" ");
+			Arrays.sort(w);
+			
+			FileWriter writer = new FileWriter(filename);
+			for(String c : w){
+				writer.write(c+" ");
+			}
+			
+			for(String word:w){
+				System.out.print(word + " ");
+			}
+			System.out.println();
+		}catch (Exception e){
+			System.out.println("File not found");
+		}
+		
+		
+		
+	}
+	
+}
+
+//File Name: file1.txt
+//==================================
+it is a sample text file
+it contains words that need to be sorted alphabetically
+
+//File Name: file2.txt
+//==================================
+lorem ipsum dolor sit amet, consectetur adipiscing elit
+pellentesque vehicula tincidunt magna, ut ultricies nisi consectetur sed
+
+//File Name: q22113/CTJ22113.java
+//==================================
+package q22113;
+import java.util.*;
+import java.math.*;
+public class CTJ22113 {
+	public static void main(String[]args){
+		Scanner sc = new Scanner(System.in);
+		String binary = sc.nextLine();
+		// long decimal = Long.parseLong(binary,2);
+		// int ans = 0;
+		// while(decimal>1){
+		// 	if(decimal %2==0)
+		// 		decimal/=2;
+		// 	else 
+		// 		decimal++;
+		// 	ans++;
+		// }
+		
+		BigInteger decimal = new BigInteger(binary,2);
+		int ans = 0;
+		
+		while(!decimal.equals(BigInteger.ONE)){
+			if(decimal.testBit(0))
+				decimal = decimal.add(BigInteger.ONE);
+			else 
+				decimal = decimal.shiftRight(1);
+			ans++;
+		}
+		System.out.println( ans);
+	}
+}
+
+//File Name: q13598/CTJ13598.java
+//==================================
+package q13598;
+import java.util.*;
+public class CTJ13598 {
+	public static void main(String[]args){
+		Scanner sc = new Scanner(System.in);
+		
+		String p = sc.nextLine();
+		String q = sc.nextLine();
+		
+		int m = p.length();
+		int n = q.length();
+		
+		int [][]dp = new int[m+1][n+1];
+		
+		for(int i = 0;i<=m;i++){
+			for(int j = 0;j<=n;j++){
+				if(i==0||j==0)
+					dp[i][j] = 0;
+				else if (p.charAt(i-1)==q.charAt(j-1))
+					dp[i][j] = dp[i-1][j-1] + 1;
+				else 
+					dp[i][j] = Math.max(dp[i-1][j],dp[i][j-1]);
+			}
+		}
+		int ans = m+n - dp[m][n];
+		System.out.println(ans);
+	}
+}
+
+
+
+
