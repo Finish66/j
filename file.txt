@@ -1,0 +1,192 @@
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
+public class DateandTime {
+    public static void main(String[] args) {
+        Date newdate = new Date();
+
+        System.out.println(newdate);
+        System.out.println(newdate.toString());
+
+        System.out.format("c", newdate);
+
+        SimpleDateFormat format = new SimpleDateFormat("");
+        String formatedDate = format.format(newdate);
+        System.out.println(format.format(newdate));
+
+        LocalDate dt = LocalDate.parse("Helll");
+
+        String months[] = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
+        GregorianCalendar gcalendar = new GregorianCalendar();
+        System.out.println(gcalendar.get(Calendar.DATE));
+        System.out.println(months[gcalendar.get(Calendar.MONTH)]);
+        System.out.println(gcalendar.get(Calendar.YEAR));
+        System.out.print(gcalendar.get(Calendar.HOUR));
+        System.out.print(gcalendar.get(Calendar.MINUTE));
+        System.out.println(gcalendar.get(Calendar.SECOND));
+        System.out.println(gcalendar.isLeapYear(gcalendar.get(Calendar.YEAR)));
+    }
+}
+
+// boolean after(Date date): Returns true if the invoking Date object contains a
+// date that is later than the one specified by date, otherwise, it returns
+// false.
+// boolean before(Date date): Returns true if the invoking Date object contains
+// a date that is earlier than the one specified by date, otherwise, it returns
+// false.
+
+// int compareTo(Date date): Compares the value of the invoking object with that
+// of date. Returns 0 if the values are equal. Returns a negative value if the
+// invoking object is earlier than date. Returns a positive value if the
+// invoking object is later than date.
+// int compareTo(Object obj): Operates identically to compareTo(Date) if obj is
+// of class Date. Otherwise, it throws a ClassCastException.
+// boolean equals(Object date): Returns true if the invoking Date object
+// contains the same time and date as the one specified by date, otherwise, it
+// returns false.
+
+// String toString(): Converts the invoking Date object into a string and
+// returns the result.
+
+
+import java.util.*;
+public static void main(String ... args) {
+    Date thisMoment = new Date();
+    long millisecondsSinceEpochStart = thisMoment.getTime();
+    System.out.println("This Moment : " + thisMoment);
+    System.out.println("Total milli seconds from epoch to this moment : " + millisecondsSinceEpochStart);
+}
+
+import java.util.*;
+import java.text.*;
+public class DateFormatInJapanMain {
+	public static void main(String ...args) {
+		Calendar c = Calendar.getInstance();
+		c.set(Integer.parseInt(args[0]), Integer.parseInt(args[1]) - 1, Integer.parseInt(args[2]), 10, 00, 00);
+		System.out.println(DateFormat.getDateInstance().format(c.getTime()) + " in Japan is: " + DateFormatInJapan.getJapaneseShortDate(c.getTime()));
+	}
+}
+
+import java.util.*;
+import java.text.*;
+public class SimpleDateFormatDemo {
+	public static void main(String ... args) throws ParseException {
+		String dateText = " ";
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+		Date a = simpleDateFormat.parse("15-08-1947");
+		System.out.println("parsedDate : " + a);
+	}
+}
+
+import java.time.*;
+import java.time.temporal.*;
+public class LocalDateDemo {
+	public static void main(String ... args) {
+		
+		
+		LocalDate javaBirthday=LocalDate.of(1995,Month.MAY,23);
+		TemporalAdjuster adjuster = TemporalAdjusters.next(DayOfWeek.SUNDAY);
+		LocalDate nextSunday = javaBirthday.with(adjuster);
+		System.out.printf("Java's birthday was on %s, and the cake was cut on next Sunday : %s.%n",javaBirthday,nextSunday);
+		/*print the statement as follows:
+		Java's birthday was on DATE, and the cake was cut on next Sunday : DATE*/
+	}
+}
+
+import java.util.*;
+import java.time.*;
+import java.time.format.*;
+public class LibraryBooking {
+    
+	public static void main(String[] args){
+		Scanner sc = new Scanner(System.in);
+		
+		String st = sc.nextLine();
+		LocalDate std = LocalDate.parse(st, DateTimeFormatter.ofPattern("dd-MM-yyy"));
+		int days = sc.nextInt();
+		LocalDate end = std.plusDays(days);
+		System.out.println(end.format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
+		sc.close();
+	}  
+}
+
+import java.time.*;
+import java.time.format.*;
+
+public class AgeDifference {
+
+	public static void main(String[] args){
+		Scanner sc  = new Scanner(System.in);
+		
+		String ad = sc.nextLine();
+		String gd = sc.nextLine();
+		
+		LocalDate at = LocalDate.parse(ad, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+		LocalDate gt = LocalDate.parse(gd, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+		
+		Period d = Period.between(gt,at);
+		// System.out.println(d.getYears());
+		System.out.println(d.getYears() + " years " + d.getMonths() + " months");
+		// System.out.println(LocalDate.parse(d,DateTimeFormatter.ofPattern("dd-MM-yyyy")));
+	}
+
+}
+
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+import java.util.Scanner;
+
+public class WeekendsCalculator {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Input start date in dd-MM-yyyy format
+        System.out.println("Enter the start date (dd-MM-yyyy):");
+        String startDateString = scanner.nextLine();
+
+        // Input end date in dd-MM-yyyy format
+        System.out.println("Enter the end date (dd-MM-yyyy):");
+        String endDateString = scanner.nextLine();
+
+        // Parse start and end dates to LocalDate objects
+        LocalDate startDate = LocalDate.parse(startDateString, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+        LocalDate endDate = LocalDate.parse(endDateString, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+
+        // Calculate the number of weekends (Saturdays and Sundays) between the dates
+        long weekendsCount = countWeekends(startDate, endDate);
+
+        // Output the number of weekends
+        System.out.println("Number of weekends between the dates: " + weekendsCount);
+
+        scanner.close();
+    }
+
+    // Method to count weekends (Saturdays and Sundays) between two dates
+    private static long countWeekends(LocalDate startDate, LocalDate endDate) {
+        long weekendsCount = 0;
+        LocalDate currentDate = startDate;
+        while (!currentDate.isAfter(endDate)) {
+            if (currentDate.getDayOfWeek() == DayOfWeek.SATURDAY || currentDate.getDayOfWeek() == DayOfWeek.SUNDAY) {
+                weekendsCount++;
+            }
+            currentDate = currentDate.plusDays(1);
+        }
+        return weekendsCount;
+    }
+}
+
+
+long weekends= 0
+LocalDate s = startDate;
+while(!s.isAfter(s)){
+    if(s.getDayOfWeek() == getDayOfWeek.SATURDAY || s.getDayOfWeek() == getDayOfWeek.SUNDAY){
+        weekends++;
+    }
+    s = s.plusDays(1);
+}
